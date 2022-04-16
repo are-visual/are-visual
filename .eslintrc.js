@@ -49,8 +49,19 @@ module.exports = {
     'no-shadow': 0,
     '@typescript-eslint/no-shadow': ['error'],
     camelcase: 0,
-    'no-unused-vars': 0,
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-unused-vars': [
+      1,
+      { vars: 'all', args: 'none', ignoreRestSiblings: true },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      1,
+      { vars: 'all', args: 'none', ignoreRestSiblings: true },
+    ],
+    'no-redeclare': 0,
+    '@typescript-eslint/no-redeclare': [
+      'error',
+      { ignoreDeclarationMerge: true },
+    ],
     '@typescript-eslint/no-var-requires': 0,
     'comma-dangle': ['error', 'only-multiline'],
     'react/button-has-type': 0,

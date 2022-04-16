@@ -63,6 +63,18 @@ importers:
       stylelint-prettier: 2.0.0_prettier@2.6.2+stylelint@14.6.1
       typescript: 4.6.3
 
+  packages/logo:
+    specifiers: {}
+
+  packages/react-core/button:
+    specifiers:
+      '@are-visual/utils': workspace:^0.0.1
+    dependencies:
+      '@are-visual/utils': link:../../utils
+
+  packages/utils:
+    specifiers: {}
+
 packages:
 
   /@babel/code-frame/7.16.7:
