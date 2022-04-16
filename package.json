@@ -5,6 +5,7 @@
   "description": "A simple React UI library.",
   "author": "Y-Hui",
   "scripts": {
+    "play": "pnpm -C playground dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
