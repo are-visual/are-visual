@@ -18,5 +18,5 @@
     "baseUrl": ".",
     "rootDir": "."
   },
-  "include": ["packages/*/src", "packages/global.d.ts", "packages/*/vite-env.d.ts"]
+  "include": ["packages/*/src", "./global.d.ts", "packages/*/vite-env.d.ts"]
 }
