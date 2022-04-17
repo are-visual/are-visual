@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "exclude": [
+    "./dist",
+    "**/*.story.tsx",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+  ],
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "outDir": "./dist/esm",
+    "declarationDir": "./dist/esm",
+    "composite": true,
+    "paths": {
+      "@are-visual/utils": ["../../utils/src"]
+    }
+  }
+}
