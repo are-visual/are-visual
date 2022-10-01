@@ -88,5 +88,6 @@ module.exports = {
         warnOnDuplicates: true,
       },
     ],
+    'consistent-return': 0,
   },
 }

@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "rootDir": "."
+    "rootDir": ".",
   },
   "include": ["packages/*/src", "./global.d.ts", "packages/*/vite-env.d.ts"]
 }

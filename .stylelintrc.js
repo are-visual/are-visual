@@ -1,47 +1,25 @@
 module.exports = {
-  root: true,
-  plugins: ['stylelint-prettier', 'stylelint-order'],
-  extends: [
-    'stylelint-config-recommended',
-    'stylelint-config-idiomatic-order',
-    'stylelint-config-prettier'
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order",
+    "stylelint-config-prettier"
   ],
-  rules: {
-    'function-name-case': ['lower', { ignoreFunctions: ['pxTransform'] }],
-    'value-keyword-case': ['lower', { ignoreKeywords: ['state.searchBarWidth'] }],
-    'prettier/prettier': [
-      true,
+  "rules": {
+    "font-family-name-quotes": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "string-quotes": "single",
+    "max-nesting-depth": [
+      2,
       {
-        parser: 'less',
-      },
+        "ignore": ["blockless-at-rules", "pseudo-classes"]
+      }
     ],
-    "selector-pseudo-class-no-unknown": [true, {
-      ignorePseudoClasses: ["global"],
-    }],
-    'at-rule-no-unknown': [
-      true,
-      {
-        ignoreAtRules: [
-          'extend',
-          'at-root',
-          'debug',
-          'warn',
-          'error',
-          'if',
-          'else',
-          'for',
-          'each',
-          'while',
-          'mixin',
-          'include',
-          'content',
-          'return',
-          'function',
-          'tailwind',
-          'layer',
-          'apply',
-        ],
-      },
-    ],
-  },
+    "max-line-length": 80,
+    "declaration-block-no-duplicate-properties": true,
+    "no-duplicate-selectors": true,
+    "no-descending-specificity": null,
+    "selector-class-pattern": "^([a-z][a-z0-9]*)((-|__)[a-z0-9]+)*$",
+    "selector-pseudo-class-no-unknown": [true, {"ignorePseudoClasses": ["global", "local"]}]
+  }
 }

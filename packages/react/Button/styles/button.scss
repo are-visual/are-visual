@@ -1,0 +1,193 @@
+$white-text: #fff;
+$black-text: #292929;
+
+.are-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: none;
+  cursor: pointer;
+  transition: all 0.14s cubic-bezier(0.645, 0.045, 0.355, 1);
+  appearance: button;
+
+  &:active:not(.are-btn-disabled, .are-btn-loading) {
+    transform: scale(0.96);
+  }
+
+  &-full-width {
+    display: block;
+    width: 100%;
+
+    &:active:not(.are-btn-disabled, .are-btn-loading) {
+      transform: none;
+    }
+  }
+
+  &-default {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+
+    &:hover:not(.are-btn-disabled, .are-btn-loading) {
+      background-color: #fbfbfb;
+    }
+  }
+
+  &-primary {
+    --are-btn-color: var(--are-color-primary);
+    --are-btn-color-brighten: var(--are-color-primary-100);
+    --are-btn-color-darken: var(--are-color-primary-800);
+  }
+
+  &-red {
+    --are-btn-text-color: #{$white-text};
+    --are-btn-color: var(--are-color-red);
+    --are-btn-same-color: var(--are-color-red-100);
+    --are-btn-border-color: var(--are-color-red);
+    --are-btn-hover-color: var(--are-color-red-600);
+    --are-btn-active-color: var(--are-color-red-600);
+  }
+
+  &-orange {
+    --are-btn-text-color: #{$white-text};
+    --are-btn-color: var(--are-color-orange);
+    --are-btn-same-color: var(--are-color-orange-100);
+    --are-btn-border-color: var(--are-color-orange);
+    --are-btn-hover-color: var(--are-color-orange-600);
+    --are-btn-active-color: var(--are-color-orange-600);
+  }
+
+  &-green {
+    --are-btn-text-color: #{$white-text};
+    --are-btn-color: var(--are-color-green);
+    --are-btn-same-color: var(--are-color-green-100);
+    --are-btn-border-color: var(--are-color-green);
+    --are-btn-hover-color: var(--are-color-green-600);
+    --are-btn-active-color: var(--are-color-green-600);
+  }
+
+  &-gray {
+    --are-btn-text-color: #{$black-text};
+    --are-btn-color: #eee;
+    --are-btn-same-color: #f3f3f3;
+    --are-btn-border-color: #eee;
+    --are-btn-hover-color: #eee;
+    --are-btn-active-color: #eee;
+  }
+
+  /* 背景填充色按钮 */
+  &-filled {
+    color: var(--are-btn-text-color);
+    background-color: var(--are-btn-color);
+    border: none;
+
+    &:hover:not(.are-btn-disabled, .are-btn-loading) {
+      background-color: var(--are-btn-hover-color);
+    }
+  }
+
+  /* 背景色与文本同色系 */
+  &-same {
+    color: var(--are-btn-color);
+    background-color: var(--are-btn-same-color);
+    border: none;
+  }
+
+  /* 白色背景按钮 */
+  &-white {
+    color: var(--are-btn-color);
+    background-color: #fff;
+    border: none;
+  }
+
+  /* 边框按钮（无背景色） */
+  &-outline {
+    color: var(--are-btn-color);
+    background-color: transparent;
+    border: 1px solid var(--are-btn-color);
+
+    &:hover:not(.are-btn-disabled, .are-btn-loading) {
+      background-color: var(--are-btn-hover-color);
+    }
+  }
+
+  /* 文字按钮 */
+  &-text {
+    color: var(--are-btn-color);
+    background-color: transparent;
+    border: none;
+  }
+
+  &-text-same {
+    color: var(--are-btn-same-color);
+    background-color: transparent;
+    border: none;
+
+    &:hover:not(.are-btn-disabled, .are-btn-loading) {
+      background-color: var(--are-btn-hover-color);
+    }
+  }
+
+  &-large {
+    min-width: 104px;
+    height: 40px;
+    padding: 6px 14px;
+    font-size: 18px;
+  }
+
+  &-middle {
+    min-width: 94px;
+    height: 36px;
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+
+  &-small {
+    min-width: 60px;
+    height: 30px;
+    padding: 2px 12px;
+    font-size: 12px;
+  }
+
+  &-rounded {
+    border-radius: var(--are-btn-rounded);
+  }
+
+  &-gray-border {
+    border-color: #d9d9d9;
+  }
+
+  &-text-light {
+    color: $white-text;
+  }
+
+  &-text-dark {
+    color: $black-text;
+  }
+
+  &-loading {
+    cursor: wait;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: rgb(255 255 255 / 35%);
+      border-radius: inherit;
+    }
+  }
+
+  &-disabled {
+    color: rgb(0 0 0 / 30%);
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+    border: none;
+  }
+
+  &-remove-bg {
+    background-color: transparent;
+  }
+}

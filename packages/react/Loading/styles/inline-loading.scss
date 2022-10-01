@@ -1,0 +1,21 @@
+@keyframes loading {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.are-inline-loading {
+  display: inline-block;
+  transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.are-inline-loading-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: -0.15em;
+  fill: currentcolor;
+  animation: loading 2.4s infinite linear;
+}

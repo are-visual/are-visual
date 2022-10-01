@@ -1,0 +1,7 @@
+{
+  "name": "@are-visual/react-dynamic-tag",
+  "version": "0.0.1",
+  "dependencies": {
+    "@are-visual/utils": "workspace:^0.0.1"
+  }
+}

@@ -1,0 +1,43 @@
+@use 'sass:color';
+
+[class^='are-'] {
+  box-sizing: border-box;
+
+  // 启用等宽数字
+  font-feature-settings: 'tnum';
+  font-variant: tabular-nums;
+}
+
+$colors: (
+  primary: #0764ff,
+  red: #f42525,
+  green: #2aae67,
+  orange: #ffab00,
+);
+$dark-mix: (
+  600: 90,
+  700: 80,
+  800: 70,
+  900: 60,
+);
+
+:root {
+  @each $name, $color in $colors {
+    @for $i from 1 through 5 {
+      --are-color-#{"" + $name}-#{$i * 100}: #{color.mix(
+          $color,
+          #fff,
+          $i * 2 * 10
+        )};
+    }
+
+    --are-color-#{"" + $name}: #{$color};
+
+    @each $i, $val in $dark-mix {
+      --are-color-#{"" + $name}-#{$i}: #{color.mix($color, #000, $val)};
+    }
+  }
+
+  /* 圆角曲率 */
+  --are-btn-rounded: 6px;
+}

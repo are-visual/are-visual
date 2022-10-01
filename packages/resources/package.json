@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "@are-visual/resources",
+  "version": "0.0.1",
+  "description": "are-visual resource files.",
+  "files": [
+    "*.svg"
+  ]
+}
