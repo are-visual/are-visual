@@ -1,0 +1,7 @@
+{
+  "name": "@are-visual/react-radio",
+  "version": "0.0.1",
+  "dependencies": {
+    "@are-visual/react-hooks": "workspace:^0.0.1"
+  }
+}

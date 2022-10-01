@@ -95,6 +95,12 @@ importers:
       '@are-visual/resources': link:../../resources
       '@are-visual/utils': link:../../utils
 
+  packages/react/Radio:
+    specifiers:
+      '@are-visual/react-hooks': workspace:^0.0.1
+    dependencies:
+      '@are-visual/react-hooks': link:../../react-hooks
+
   packages/resources:
     specifiers: {}
 

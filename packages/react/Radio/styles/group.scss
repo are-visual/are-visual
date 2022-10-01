@@ -1,0 +1,19 @@
+.are-radio-group {
+  display: flex;
+}
+
+.are-radio-group-x {
+  --are-radio-spacing: 12px;
+
+  .are-radio + .are-radio {
+    margin-left: var(--are-radio-spacing);
+  }
+}
+
+.are-radio-group-y {
+  --are-radio-spacing: 8px;
+
+  .are-radio + .are-radio {
+    margin-top: var(--are-radio-spacing);
+  }
+}
