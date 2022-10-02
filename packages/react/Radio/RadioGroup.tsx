@@ -1,12 +1,27 @@
 import './styles/group.scss'
 
-import { useControllableValue } from '@are-visual/react-hooks'
+import {
+  useControllableValue,
+  useIsomorphicEffect,
+} from '@are-visual/react-hooks'
 import cx from 'clsx'
-import React, { PropsWithChildren, useMemo } from 'react'
+import { isNil } from 'lodash-es'
+import React, {
+  ForwardedRef,
+  forwardRef,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+} from 'react'
 
 import { RadioState, RadioStateShape } from './context'
 
-export type RadioGroupProps<T = string> = RadioStateShape<T> & {
+type NativeDivElement = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>
+
+export interface RadioGroupProps<T = string> extends RadioStateShape<T> {
   defaultValue?: T
   /**
    * 排列方向
@@ -20,35 +35,66 @@ export type RadioGroupProps<T = string> = RadioStateShape<T> & {
   spacing?: string
 }
 
-function RadioGroup<T>(props: PropsWithChildren<RadioGroupProps<T>>) {
+type RadioGroupRef = HTMLDivElement | null
+
+type InternalRadioGroupProps<T = string> = Omit<
+  NativeDivElement,
+  keyof RadioGroupProps<T>
+> &
+  RadioGroupProps<T>
+
+function RadioGroup<T>(
+  props: InternalRadioGroupProps<T>,
+  ref: ForwardedRef<RadioGroupRef>,
+) {
   const {
     children,
     name,
     disabled,
-    defaultValue,
     direction = 'x',
     spacing,
+    className,
+
+    // 仅仅从 props 中解构，防止通过 rest 传递到 div 中
+    defaultValue: _defaultValue,
+    value: _value,
+    onChange: _handleChange,
+
+    ...rest
   } = props
 
-  const [value, onChange] = useControllableValue<T | undefined>(props, {
-    defaultValue,
-  })
+  const [value, onChange] = useControllableValue<T | undefined>(props)
 
   const state = useMemo<RadioStateShape<T>>(() => {
     return { value, name, disabled, onChange }
   }, [disabled, name, onChange, value])
 
+  const groupElement = useRef<RadioGroupRef>(null)
+
+  useIsomorphicEffect(() => {
+    const target = groupElement.current
+    if (!target || isNil(spacing)) return
+    target.style.setProperty('--are-radio-spacing', spacing)
+  }, [spacing])
+
+  useImperativeHandle<RadioGroupRef, RadioGroupRef>(
+    ref,
+    () => groupElement.current,
+  )
+
   return (
     <RadioState.Provider value={state}>
       <div
-        className={cx('are-radio-group', {
-          'are-radio-group-x': direction === 'x',
-          'are-radio-group-y': direction === 'y',
-        })}
-        style={{
-          flexDirection: direction === 'y' ? 'column' : 'row',
-          ...(spacing ? { '--are-radio-spacing': spacing } : {}),
-        }}
+        {...rest}
+        ref={groupElement}
+        className={cx(
+          'are-radio-group',
+          {
+            'are-radio-group-x': direction === 'x',
+            'are-radio-group-y': direction === 'y',
+          },
+          className,
+        )}
       >
         {children}
       </div>
@@ -56,4 +102,8 @@ function RadioGroup<T>(props: PropsWithChildren<RadioGroupProps<T>>) {
   )
 }
 
-export default RadioGroup
+export default forwardRef(RadioGroup) as <T>(
+  props: InternalRadioGroupProps<T> & {
+    ref?: React.ForwardedRef<HTMLDivElement>
+  },
+) => ReturnType<typeof RadioGroup>

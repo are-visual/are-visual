@@ -3,6 +3,9 @@
 }
 
 .are-radio-group-x {
+  flex-direction: row;
+  align-items: center;
+
   --are-radio-spacing: 12px;
 
   .are-radio + .are-radio {
@@ -11,6 +14,8 @@
 }
 
 .are-radio-group-y {
+  flex-direction: column;
+
   --are-radio-spacing: 8px;
 
   .are-radio + .are-radio {

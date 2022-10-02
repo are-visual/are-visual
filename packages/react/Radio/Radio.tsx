@@ -18,7 +18,7 @@ export interface RadioProps<T>
   onChange?: (value: T, event: Parameters<RadioChangeHandler>[0]) => void
 }
 
-function RadioInner<T = string>(
+function Radio<T = string>(
   props: PropsWithChildren<RadioProps<T>>,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
@@ -83,10 +83,8 @@ function RadioInner<T = string>(
   )
 }
 
-const Radio = forwardRef(RadioInner) as <T>(
+export default forwardRef(Radio) as <T>(
   props: PropsWithChildren<RadioProps<T>> & {
     ref?: React.ForwardedRef<HTMLInputElement>
   },
-) => ReturnType<typeof RadioInner>
-
-export default Radio
+) => ReturnType<typeof Radio>
