@@ -113,6 +113,7 @@ function Radio<T = string>(
       style={style}
     >
       <input
+        tabIndex={0}
         {...rest}
         ref={ref as ForwardedRef<HTMLInputElement>}
         id={radioId}

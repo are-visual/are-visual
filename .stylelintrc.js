@@ -15,7 +15,7 @@ module.exports = {
         ignore: ['blockless-at-rules', 'pseudo-classes'],
       },
     ],
-    'max-line-length': 80,
+    'max-line-length': 120,
     'declaration-block-no-duplicate-properties': true,
     'no-duplicate-selectors': true,
     'no-descending-specificity': null,
@@ -24,7 +24,7 @@ module.exports = {
       true,
       { ignorePseudoClasses: ['global', 'local'] },
     ],
-    'at-rule-no-unknown': [true, { ignoreAtRules: ['/^tailwind/', 'string'] }],
-    'scss/at-rule-no-unknown': [true, { ignoreAtRules: ['/^(tailwind|each|for)/', 'string'] }],
+    'at-rule-no-unknown': [true, { ignoreAtRules: ['/^(tailwind|each|for|use|)/', 'string'] }],
+    'scss/at-rule-no-unknown': [true, { ignoreAtRules: ['/^(tailwind|each|for|use|)/', 'string'] }],
   },
 }

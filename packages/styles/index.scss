@@ -37,7 +37,4 @@ $dark-mix: (
       --are-color-#{"" + $name}-#{$i}: #{color.mix($color, #000, $val)};
     }
   }
-
-  /* 圆角曲率 */
-  --are-btn-rounded: 6px;
 }

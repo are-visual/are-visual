@@ -1,0 +1,13 @@
+:root {
+  // radio
+  --are-radio-color: #0764ff;
+  --are-radio-border-color: #d6d6d6;
+  --are-radio-hover-border-color: #0764ff;
+  --are-radio-disabled-color: #ddd;
+  --are-radio-disabled-border-color: #ccc;
+  --are-radio-indicator-color: #fff;
+  --are-radio-disabled-indicator-color: rgb(0 0 0 / 40%);
+
+  // radio focus
+  --are-radio-focus-color: var(--are-focus-color);
+}
