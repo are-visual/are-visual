@@ -9,5 +9,6 @@ const Radio = RawRadio as RadioComponent
 Radio.Group = Group
 
 export { Radio }
-export type { RadioProps } from './Radio'
+export type { RadioRender, RadioRenderFn } from './interface'
+export type { CustomRadioProps, RadioChangeEvent, RadioProps } from './Radio'
 export type { RadioGroupProps } from './RadioGroup'

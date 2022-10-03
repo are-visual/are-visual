@@ -100,8 +100,10 @@ importers:
   packages/react/Radio:
     specifiers:
       '@are-visual/react-hooks': workspace:^0.0.1
+      '@are-visual/utils': workspace:^0.0.1
     dependencies:
       '@are-visual/react-hooks': link:../../react-hooks
+      '@are-visual/utils': link:../../utils
 
   packages/resources:
     specifiers: {}

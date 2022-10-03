@@ -2,26 +2,59 @@ import './styles/index.scss'
 
 import { useId } from '@are-visual/react-hooks'
 import cx from 'clsx'
-import React, { ForwardedRef, forwardRef, PropsWithChildren } from 'react'
+import React, {
+  ChangeEvent,
+  DetailedHTMLProps,
+  ForwardedRef,
+  forwardRef,
+  InputHTMLAttributes,
+  ReactElement,
+} from 'react'
 
 import { useRadioState } from './context'
+import { RadioRenderFn } from './interface'
 
-type NativeRadioProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
+type NativeRadioProps = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >
-type RadioChangeHandler = NonNullable<NativeRadioProps['onChange']>
+export type RadioChangeEvent = ChangeEvent<HTMLInputElement>
 
-export interface RadioProps<T>
+interface InternalRadioProps<T>
   extends Omit<NativeRadioProps, 'value' | 'onChange'> {
   value: T
-  onChange?: (value: T, event: Parameters<RadioChangeHandler>[0]) => void
+}
+
+export interface CustomRadioProps<T>
+  extends Omit<InternalRadioProps<T>, 'ref'> {
+  ref?: ForwardedRef<unknown>
+  /**
+   * 自定义渲染（权重相比 Radio.Group render 较高）
+   */
+  render: RadioRenderFn<T>
+  onChange?: (value: T, event?: RadioChangeEvent) => void
+}
+
+export interface RadioProps<T> extends InternalRadioProps<T> {
+  /**
+   * 自定义渲染（权重相比 Radio.Group render 较高）
+   */
+  render?: RadioRenderFn<T>
+  onChange?: (value: T, event: RadioChangeEvent) => void
 }
 
 function Radio<T = string>(
-  props: PropsWithChildren<RadioProps<T>>,
+  props: CustomRadioProps<T>,
+  ref: ForwardedRef<unknown>,
+): ReactElement
+function Radio<T = string>(
+  props: RadioProps<T>,
   ref: ForwardedRef<HTMLInputElement>,
-) {
+): ReactElement
+function Radio<T = string>(
+  props: CustomRadioProps<T> | RadioProps<T>,
+  ref: ForwardedRef<unknown> | ForwardedRef<HTMLInputElement>,
+): ReactElement {
   const {
     children,
     className,
@@ -31,6 +64,7 @@ function Radio<T = string>(
     onChange,
     disabled: scopedDisabled,
     name: scopedName,
+    render: scopedRender,
     ...rest
   } = props
 
@@ -40,17 +74,30 @@ function Radio<T = string>(
     disabled: injectDisabled,
     value: activeValue,
     onChange: updateValue,
+    render: injectRender,
   } = ctx || {}
 
   const radioId = useId(id)
   const name = scopedName ?? injectName
   const disabled = injectDisabled ?? scopedDisabled
   const checked = Object.is(value, activeValue)
+  const render = scopedRender ?? injectRender
 
-  const handleChange: RadioChangeHandler = (e) => {
+  const handleChange = (e?: RadioChangeEvent) => {
     if (disabled || checked) return
     updateValue?.(value, e)
-    onChange?.(value, e)
+    onChange?.(value, e as RadioChangeEvent)
+  }
+
+  if (render) {
+    return render({
+      value,
+      disabled,
+      checked,
+      name,
+      children,
+      setActive: () => handleChange(),
+    })
   }
 
   return (
@@ -58,7 +105,7 @@ function Radio<T = string>(
       className={cx(
         'are-radio',
         {
-          'are-radio-checked': Object.is(value, activeValue),
+          'are-radio-checked': checked,
           'are-radio-disabled': disabled,
         },
         className,
@@ -67,7 +114,7 @@ function Radio<T = string>(
     >
       <input
         {...rest}
-        ref={ref}
+        ref={ref as ForwardedRef<HTMLInputElement>}
         id={radioId}
         type="radio"
         className="are-radio-icon"
@@ -83,8 +130,17 @@ function Radio<T = string>(
   )
 }
 
-export default forwardRef(Radio) as <T>(
-  props: PropsWithChildren<RadioProps<T>> & {
-    ref?: React.ForwardedRef<HTMLInputElement>
-  },
-) => ReturnType<typeof Radio>
+interface RadioComponent {
+  <T>(
+    props: CustomRadioProps<T> & {
+      ref?: ForwardedRef<unknown>
+    },
+  ): ReactElement
+  <T>(
+    props: RadioProps<T> & {
+      ref?: ForwardedRef<HTMLInputElement>
+    },
+  ): ReactElement
+}
+
+export default forwardRef(Radio) as RadioComponent

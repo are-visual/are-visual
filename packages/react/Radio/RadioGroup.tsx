@@ -15,6 +15,7 @@ import React, {
 } from 'react'
 
 import { RadioState, RadioStateShape } from './context'
+import type { RadioRenderFn } from './interface'
 
 type NativeDivElement = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -33,6 +34,10 @@ export interface RadioGroupProps<T = string> extends RadioStateShape<T> {
    * 间距大小
    */
   spacing?: string
+  /**
+   * 自定义 Radio 节点渲染
+   */
+  render?: RadioRenderFn<T>
 }
 
 type RadioGroupRef = HTMLDivElement | null
@@ -54,6 +59,7 @@ function RadioGroup<T>(
     direction = 'x',
     spacing,
     className,
+    render,
 
     // 仅仅从 props 中解构，防止通过 rest 传递到 div 中
     defaultValue: _defaultValue,
@@ -66,8 +72,8 @@ function RadioGroup<T>(
   const [value, onChange] = useControllableValue<T | undefined>(props)
 
   const state = useMemo<RadioStateShape<T>>(() => {
-    return { value, name, disabled, onChange }
-  }, [disabled, name, onChange, value])
+    return { value, name, disabled, onChange, render }
+  }, [disabled, name, onChange, value, render])
 
   const groupElement = useRef<RadioGroupRef>(null)
 
