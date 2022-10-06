@@ -1,5 +1,5 @@
 import { getScrollbarWidth } from '@are-visual/utils'
-import { RefObject, useCallback, useRef } from 'react'
+import { RefObject, useCallback } from 'react'
 
 interface StyleSnap {
   overflow: string
@@ -13,6 +13,8 @@ const getPaddingRight = (element: Element): number => {
 }
 
 const styleSnap = new Map<HTMLElement, StyleSnap>()
+
+export const ARE_VISUAL_SCROLL_WIDTH_CSS_VAR = '--are-scroll-width'
 
 /**
  * ```ts
@@ -40,11 +42,16 @@ function useScrollLock(element?: RefObject<HTMLElement>) {
           'padding-right',
           `${paddingRight + scrollbarWidth}px`,
         )
+        el.style.setProperty(
+          ARE_VISUAL_SCROLL_WIDTH_CSS_VAR,
+          `${scrollbarWidth}px`,
+        )
       } else {
         const target = styleSnap.get(el)
         if (!target) return
         el.style.setProperty('overflow', target.overflow)
         el.style.setProperty('padding-right', target.paddingRight)
+        el.style.removeProperty(ARE_VISUAL_SCROLL_WIDTH_CSS_VAR)
         styleSnap.delete(el)
       }
     },
