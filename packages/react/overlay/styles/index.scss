@@ -1,0 +1,59 @@
+.are-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 20%);
+}
+
+.are-overlay-motion {
+  animation-duration: 0.24s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+
+  &.are-overlay-motion-appear,
+  &.are-overlay-motion-enter {
+    animation-name: overlay-fade-in;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+
+  &.are-overlay-motion-appear.are-overlay-motion-appear-active,
+  &.are-overlay-motion-enter.are-overlay-motion-enter-active {
+    animation-name: overlay-fade-in;
+    animation-play-state: running;
+  }
+
+  &.are-overlay-motion-leave {
+    animation-name: overlay-fade-out;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+
+    &.are-overlay-motion-leave-active {
+      animation-name: overlay-fade-out;
+      animation-play-state: running;
+    }
+  }
+}
+
+@keyframes overlay-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes overlay-fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

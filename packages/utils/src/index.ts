@@ -1,3 +1,4 @@
+export { default as getScrollbarWidth } from './getScrollbarWidth'
 export type { Mapping } from './types/mapping'
 export type { Omit } from './types/omit'
 export type { PropsWithStyle, StyleProps } from './types/style-type'
