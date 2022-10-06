@@ -12,6 +12,8 @@ const getPaddingRight = (element: Element): number => {
   return Number.parseInt(view.getComputedStyle(element).paddingRight, 10) || 0
 }
 
+const styleSnap = new Map<HTMLElement, StyleSnap>()
+
 /**
  * ```ts
  * const lock = useScrollLock() // 默认为 document.body
@@ -21,28 +23,29 @@ const getPaddingRight = (element: Element): number => {
  * ```
  */
 function useScrollLock(element?: RefObject<HTMLElement>) {
-  const styleSnap = useRef<StyleSnap>()
-
   const lock = useCallback(
     (value: boolean) => {
       const el = element?.current || document.body
       if (!el) return
       if (value) {
+        if (styleSnap.has(el)) return
         const paddingRight = getPaddingRight(el)
         const scrollbarWidth = getScrollbarWidth(el)
-        styleSnap.current = {
+        styleSnap.set(el, {
           overflow: el.style.overflow,
           paddingRight: el.style.paddingRight,
-        }
+        })
         el.style.setProperty('overflow', 'hidden')
         el.style.setProperty(
           'padding-right',
           `${paddingRight + scrollbarWidth}px`,
         )
       } else {
-        if (!styleSnap.current) return
-        el.style.setProperty('overflow', styleSnap.current.overflow)
-        el.style.setProperty('padding-right', styleSnap.current.paddingRight)
+        const target = styleSnap.get(el)
+        if (!target) return
+        el.style.setProperty('overflow', target.overflow)
+        el.style.setProperty('padding-right', target.paddingRight)
+        styleSnap.delete(el)
       }
     },
     [element],

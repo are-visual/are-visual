@@ -42,9 +42,8 @@ const Overlay: FC<OverlayProps> = (props) => {
 
   const lock = useScrollLock()
   useIsomorphicEffect(() => {
-    if (canUseDom()) {
-      lock(!!visible)
-    }
+    if (!canUseDom()) return
+    lock(!!visible)
   }, [lock, visible])
 
   return (
