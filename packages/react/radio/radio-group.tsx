@@ -25,16 +25,22 @@ type NativeDivElement = React.DetailedHTMLProps<
 export interface RadioGroupProps<T = string> extends RadioStateShape<T> {
   defaultValue?: T
   /**
+   * Horizontal or vertical orientation.
+   *
    * 排列方向
    *
    * @default "x"
    */
   direction?: 'x' | 'y'
   /**
+   * Spacing between radios.
+   *
    * 间距大小
    */
   spacing?: string
   /**
+   * Custom radios rendering
+   *
    * 自定义 Radio 节点渲染
    */
   render?: RadioRenderFn<T>

@@ -73,6 +73,8 @@ export interface ButtonProps {
    */
   fullWidth?: boolean
   /**
+   * Loading state
+   *
    * 加载状态
    */
   loading?: boolean

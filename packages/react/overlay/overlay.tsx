@@ -8,16 +8,22 @@ import React, { FC, HTMLAttributes } from 'react'
 
 interface PureOverlayProps {
   /**
+   * Whether to show.
+   *
    * 是否显示
    */
   visible?: boolean
   /**
+   * Sets the `z-index`.
+   *
    * DOM 层级
    *
    * @default 10
    */
   zIndex?: number
   /**
+   * Destroy the DOM node when visible is false.
+   *
    * visible 为 false 时销毁 DOM 节点
    *
    * @default false

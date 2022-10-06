@@ -22,6 +22,9 @@ export type RadioChangeEvent = ChangeEvent<HTMLInputElement>
 
 interface InternalRadioProps<T>
   extends Omit<NativeRadioProps, 'value' | 'onChange'> {
+  /**
+   * Radio value.
+   */
   value: T
 }
 
@@ -30,6 +33,8 @@ export interface CustomRadioProps<T>
   ref?: ForwardedRef<unknown>
   /**
    * 自定义渲染（权重相比 Radio.Group render 较高）
+   *
+   * Custom rendering (higher weighting compared to Radio.Group render)
    */
   render: RadioRenderFn<T>
   onChange?: (value: T, event?: RadioChangeEvent) => void
@@ -38,6 +43,8 @@ export interface CustomRadioProps<T>
 export interface RadioProps<T> extends InternalRadioProps<T> {
   /**
    * 自定义渲染（权重相比 Radio.Group render 较高）
+   *
+   * Custom rendering (higher weighting compared to Radio.Group render)
    */
   render?: RadioRenderFn<T>
   onChange?: (value: T, event: RadioChangeEvent) => void
