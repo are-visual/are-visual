@@ -1,14 +1,15 @@
 import './styles/button.scss'
 
+import cx from 'clsx'
+import React, { forwardRef } from 'react'
+
 import {
   DefaultOverload,
   DynamicComponent,
   DynamicTag,
   HTMLProps,
-} from '@are-visual/react-dynamic-tag'
-import { InlineLoading } from '@are-visual/react-loading'
-import cx from 'clsx'
-import React, { forwardRef } from 'react'
+} from '../dynamic-tag'
+import { InlineLoading } from '../loading'
 
 type NativeButtonProps = HTMLProps<'button'>
 type ClickHandler = NonNullable<NativeButtonProps['onClick']>

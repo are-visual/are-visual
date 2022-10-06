@@ -79,25 +79,25 @@ importers:
     dependencies:
       '@are-visual/utils': link:../utils
 
-  packages/react/Button:
+  packages/react/button:
     specifiers:
       '@are-visual/react-dynamic-tag': workspace:^0.0.1
       '@are-visual/react-loading': workspace:^0.0.1
       '@are-visual/resources': workspace:^0.0.1
       '@are-visual/utils': workspace:^0.0.1
     dependencies:
-      '@are-visual/react-dynamic-tag': link:../DynamicTag
-      '@are-visual/react-loading': link:../Loading
+      '@are-visual/react-dynamic-tag': link:../dynamic-tag
+      '@are-visual/react-loading': link:../loading
       '@are-visual/resources': link:../../resources
       '@are-visual/utils': link:../../utils
 
-  packages/react/DynamicTag:
+  packages/react/dynamic-tag:
     specifiers:
       '@are-visual/utils': workspace:^0.0.1
     dependencies:
       '@are-visual/utils': link:../../utils
 
-  packages/react/Loading:
+  packages/react/loading:
     specifiers:
       '@are-visual/resources': workspace:^0.0.1
       '@are-visual/utils': workspace:^0.0.1
@@ -105,7 +105,7 @@ importers:
       '@are-visual/resources': link:../../resources
       '@are-visual/utils': link:../../utils
 
-  packages/react/Radio:
+  packages/react/overlay:
     specifiers:
       '@are-visual/react-hooks': workspace:^0.0.1
       '@are-visual/utils': workspace:^0.0.1
@@ -113,7 +113,7 @@ importers:
       '@are-visual/react-hooks': link:../../react-hooks
       '@are-visual/utils': link:../../utils
 
-  packages/react/overlay:
+  packages/react/radio:
     specifiers:
       '@are-visual/react-hooks': workspace:^0.0.1
       '@are-visual/utils': workspace:^0.0.1

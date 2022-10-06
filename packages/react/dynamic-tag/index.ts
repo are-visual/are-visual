@@ -1,4 +1,4 @@
-export { default as DynamicTag } from './DynamicTag'
+export { default as DynamicTag } from './dynamic-tag'
 export type {
   DefaultOverload,
   DynamicComponent,
