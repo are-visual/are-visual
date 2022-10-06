@@ -13,17 +13,16 @@ interface PureOverlayProps {
   visible?: boolean
   /**
    * DOM 层级
+   *
    * @default 10
    */
   zIndex?: number
   /**
-   * 渲染位置
+   * visible 为 false 时销毁 DOM 节点
+   *
+   * @default false
    */
-  container?: HTMLElement
-  /**
-   * 关闭函数
-   */
-  onClose?: () => void
+  destroyable?: boolean
 }
 
 export type OverlayProps = PureOverlayProps &
@@ -35,8 +34,7 @@ const Overlay: FC<OverlayProps> = (props) => {
     style,
     visible,
     zIndex = 10,
-    container,
-    onClose,
+    destroyable = false,
     ...rest
   } = props
 
@@ -52,6 +50,7 @@ const Overlay: FC<OverlayProps> = (props) => {
       visible={visible}
       motionName="are-overlay-motion"
       leavedClassName="are-overlay-hidden"
+      removeOnLeave={destroyable}
     >
       {({ className: motionClassName, style: motionStyle }) => (
         <div

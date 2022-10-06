@@ -8,6 +8,10 @@
   background-color: rgb(0 0 0 / 20%);
 }
 
+.are-overlay-hidden {
+  display: none;
+}
+
 .are-overlay-motion {
   animation-duration: 0.24s;
   animation-fill-mode: both;
