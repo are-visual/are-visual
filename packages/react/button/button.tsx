@@ -80,12 +80,12 @@ export interface ButtonProps {
   loading?: boolean
 }
 
-type ButtonComponent = DynamicComponent<'button', ButtonProps>
+type ButtonComponentType = DynamicComponent<'button', ButtonProps>
 
-const Button: ButtonComponent = forwardRef<
+const ButtonComponent: ButtonComponentType = forwardRef<
   HTMLElement,
   DefaultOverload<'button'> & ButtonProps
->((props, ref) => {
+>(function Button(props, ref) {
   const {
     children,
     className,
@@ -160,6 +160,4 @@ const Button: ButtonComponent = forwardRef<
   )
 })
 
-Button.displayName = 'AreButton'
-
-export default Button
+export default ButtonComponent

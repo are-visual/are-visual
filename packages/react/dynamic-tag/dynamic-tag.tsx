@@ -2,15 +2,15 @@ import { createElement, forwardRef } from 'react'
 
 import type { DefaultOverload, DynamicComponent } from './factory'
 
-type DynamicTagComponent = DynamicComponent<'div', unknown>
+type DynamicTagComponentType = DynamicComponent<'div', unknown>
 
-const DynamicTag: DynamicTagComponent = forwardRef<
+const DynamicTagComponent: DynamicTagComponentType = forwardRef<
   HTMLElement,
   DefaultOverload<'div'>
->((props, ref) => {
+>(function DynamicTag(props, ref) {
   const { renderAs = 'div', ...rest } = props
 
   return createElement(renderAs, { ...rest, ref })
 })
 
-export default DynamicTag
+export default DynamicTagComponent
