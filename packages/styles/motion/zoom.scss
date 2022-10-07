@@ -1,0 +1,31 @@
+.are-zoom-in-motion {
+  &-enter {
+    animation: are-zoom-in 0.24s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  &-leave {
+    animation: are-zoom-in 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) reverse;
+  }
+}
+
+.are-zoom-out-motion {
+  &-enter {
+    animation: are-zoom-in 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) reverse;
+  }
+
+  &-leave {
+    animation: are-zoom-in 0.24s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+}
+
+@keyframes are-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

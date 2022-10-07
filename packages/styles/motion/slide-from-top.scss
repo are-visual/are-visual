@@ -1,0 +1,19 @@
+.are-slide-from-top-motion {
+  &-enter {
+    animation: are-slide-from-top 0.24s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  &-leave {
+    animation: are-slide-from-top 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) reverse;
+  }
+}
+
+@keyframes are-slide-from-top {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

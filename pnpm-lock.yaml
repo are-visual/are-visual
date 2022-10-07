@@ -113,6 +113,18 @@ importers:
       '@are-visual/react-hooks': link:../../react-hooks
       '@are-visual/utils': link:../../utils
 
+  packages/react/popup:
+    specifiers:
+      '@are-visual/react-hooks': workspace:^0.0.1
+      '@are-visual/react-overlay': workspace:^0.0.1
+      '@are-visual/styles': workspace:^0.0.1
+      '@are-visual/utils': workspace:^0.0.1
+    dependencies:
+      '@are-visual/react-hooks': link:../../react-hooks
+      '@are-visual/react-overlay': link:../overlay
+      '@are-visual/styles': link:../../styles
+      '@are-visual/utils': link:../../utils
+
   packages/react/radio:
     specifiers:
       '@are-visual/react-hooks': workspace:^0.0.1

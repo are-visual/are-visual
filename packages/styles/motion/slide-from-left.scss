@@ -1,0 +1,19 @@
+.are-slide-from-left-motion {
+  &-enter {
+    animation: are-slide-from-left 0.24s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  &-leave {
+    animation: are-slide-from-left 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) reverse;
+  }
+}
+
+@keyframes are-slide-from-left {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

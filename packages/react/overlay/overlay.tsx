@@ -6,7 +6,7 @@ import CSSMotion from 'rc-motion'
 import canUseDom from 'rc-util/es/Dom/canUseDom'
 import React, { FC, HTMLAttributes } from 'react'
 
-interface PureOverlayProps {
+export interface PureOverlayProps {
   /**
    * Whether to show.
    *
@@ -29,6 +29,14 @@ interface PureOverlayProps {
    * @default false
    */
   destroyable?: boolean
+  /**
+   * Whether to lock body scrolling.
+   *
+   * 为 true 时将禁止 body 滚动
+   *
+   * @default true
+   */
+  lockScroll?: boolean
 }
 
 export type OverlayProps = PureOverlayProps &
@@ -41,14 +49,15 @@ const Overlay: FC<OverlayProps> = (props) => {
     visible,
     zIndex = 10,
     destroyable = false,
+    lockScroll = true,
     ...rest
   } = props
 
   const lock = useScrollLock()
   useIsomorphicEffect(() => {
-    if (!canUseDom()) return
+    if (!lockScroll || !canUseDom()) return
     lock(!!visible)
-  }, [lock, visible])
+  }, [lockScroll, lock, visible])
 
   return (
     <CSSMotion

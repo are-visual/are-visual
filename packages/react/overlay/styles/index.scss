@@ -19,45 +19,37 @@
 
   &.are-overlay-motion-appear,
   &.are-overlay-motion-enter {
-    animation-name: overlay-fade-in;
+    animation-name: overlay-fade;
     animation-fill-mode: both;
     animation-play-state: paused;
   }
 
   &.are-overlay-motion-appear.are-overlay-motion-appear-active,
   &.are-overlay-motion-enter.are-overlay-motion-enter-active {
-    animation-name: overlay-fade-in;
+    animation-name: overlay-fade;
     animation-play-state: running;
   }
 
   &.are-overlay-motion-leave {
-    animation-name: overlay-fade-out;
+    animation-name: overlay-fade;
     animation-fill-mode: both;
     animation-play-state: paused;
+    animation-direction: reverse;
 
     &.are-overlay-motion-leave-active {
-      animation-name: overlay-fade-out;
+      animation-name: overlay-fade;
       animation-play-state: running;
+      animation-direction: reverse;
     }
   }
 }
 
-@keyframes overlay-fade-in {
+@keyframes overlay-fade {
   0% {
     opacity: 0;
   }
 
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes overlay-fade-out {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
   }
 }

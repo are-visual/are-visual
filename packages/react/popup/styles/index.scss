@@ -1,0 +1,45 @@
+@import '@are-visual/styles/motion/slide';
+@import '@are-visual/styles/motion/zoom';
+
+.are-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.are-popup-lock {
+  overflow: hidden;
+}
+
+.are-popup-body {
+  position: absolute;
+  pointer-events: auto;
+
+  &-top {
+    top: 0;
+  }
+
+  &-bottom {
+    bottom: 0;
+  }
+
+  &-left {
+    left: 0;
+  }
+
+  &-right {
+    right: 0;
+  }
+
+  &-x-center {
+    justify-content: center;
+  }
+
+  &-center {
+    align-items: center;
+    justify-content: center;
+  }
+}
