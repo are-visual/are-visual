@@ -1,0 +1,29 @@
+.are-fade-in-motion {
+  &-enter {
+    animation: are-fade-in 0.24s linear;
+  }
+
+  &-leave {
+    animation: are-fade-in 0.24s linear reverse;
+  }
+}
+
+.are-fade-out-motion {
+  &-enter {
+    animation: are-fade-in 0.24s ease-in-out reverse;
+  }
+
+  &-leave {
+    animation: are-fade-in 0.24s ease-in-out ;
+  }
+}
+
+@keyframes are-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

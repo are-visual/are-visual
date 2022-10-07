@@ -63,7 +63,7 @@ const Overlay: FC<OverlayProps> = (props) => {
     <CSSMotion
       key="are-overlay"
       visible={visible}
-      motionName="are-overlay-motion"
+      motionName="are-fade-in-motion"
       leavedClassName="are-overlay-hidden"
       removeOnLeave={destroyable}
     >

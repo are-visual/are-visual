@@ -2,6 +2,7 @@ import { getScrollbarWidth } from '@are-visual/utils'
 import { RefObject, useCallback } from 'react'
 
 interface StyleSnap {
+  $count: number
   overflow: string
   paddingRight: string
 }
@@ -15,6 +16,14 @@ const getPaddingRight = (element: Element): number => {
 const styleSnap = new Map<HTMLElement, StyleSnap>()
 
 export const ARE_VISUAL_SCROLL_WIDTH_CSS_VAR = '--are-scroll-width'
+
+function canUnlock() {
+  let count = 0
+  styleSnap.forEach((item) => {
+    count += Math.max(item.$count, 0)
+  })
+  return count <= 1
+}
 
 /**
  * ```ts
@@ -30,12 +39,16 @@ function useScrollLock(element?: RefObject<HTMLElement>) {
       const el = element?.current || document.body
       if (!el) return
       if (value) {
-        if (styleSnap.has(el)) return
+        if (styleSnap.has(el)) {
+          styleSnap.get(el)!.$count += 1
+          return
+        }
         const paddingRight = getPaddingRight(el)
         const scrollbarWidth = getScrollbarWidth(el)
         styleSnap.set(el, {
           overflow: el.style.overflow,
           paddingRight: el.style.paddingRight,
+          $count: 1,
         })
         el.style.setProperty('overflow', 'hidden')
         el.style.setProperty(
@@ -49,6 +62,10 @@ function useScrollLock(element?: RefObject<HTMLElement>) {
       } else {
         const target = styleSnap.get(el)
         if (!target) return
+        if (!canUnlock()) {
+          target.$count = Math.max(target.$count - 1, 0)
+          return
+        }
         el.style.setProperty('overflow', target.overflow)
         el.style.setProperty('padding-right', target.paddingRight)
         el.style.removeProperty(ARE_VISUAL_SCROLL_WIDTH_CSS_VAR)

@@ -1,7 +1,9 @@
 import './styles/index.scss'
 
 import {
+  GetContainer,
   useIsomorphicEffect,
+  usePortal,
   useSameTarget,
   useScrollLock,
 } from '@are-visual/react-hooks'
@@ -23,8 +25,15 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import { createPortal } from 'react-dom'
 
-type PopupPosition = 'top' | 'right' | 'bottom' | 'left' | 'center' | 'x-center'
+export type PopupPosition =
+  | 'top'
+  | 'right'
+  | 'bottom'
+  | 'left'
+  | 'center'
+  | 'x-center'
 
 export interface PopupProps extends PureOverlayProps {
   className?: string
@@ -63,6 +72,10 @@ export interface PopupProps extends PureOverlayProps {
    * 关闭时的回调
    */
   onClose?: () => void
+  /**
+   * 渲染到指定 DOM 节点，默认渲染至 body
+   */
+  getContainer?: GetContainer
   children?: ReactNode
 }
 
@@ -82,7 +95,7 @@ const POPUP_MOTION_NAME: Record<PopupPosition, string> = {
 const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
   function Popup(props, ref) {
     const {
-      visible,
+      visible = false,
       destroyable = false,
       zIndex = 10,
       className,
@@ -96,6 +109,7 @@ const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
       overlayProps,
       children,
       onClose,
+      getContainer,
       ...rest
     } = props
 
@@ -145,8 +159,12 @@ const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
     const positionClass = position ? `are-popup-body-${position}` : ''
     const motionName = scopedMotionName ?? POPUP_MOTION_NAME[position || '']
 
-    return (
-      <div className="are-popup-root">
+    const container = usePortal(visible, getContainer)
+    const node = (
+      <div
+        className="are-popup-root"
+        style={{ display: animatedVisible ? undefined : 'none' }}
+      >
         {showOverlay && (
           <Overlay
             {...overlayProps}
@@ -162,7 +180,7 @@ const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
             [positionClass]: isCenter,
             'are-popup-lock': shouldLock,
           })}
-          style={{ zIndex, display: animatedVisible ? undefined : 'none' }}
+          style={{ zIndex }}
           onClick={outsideEvent.onClick}
           onMouseDown={outsideEvent.onMouseDown}
           onMouseUp={outsideEvent.onMouseUp}
@@ -195,6 +213,12 @@ const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
         </div>
       </div>
     )
+
+    if (container) {
+      return createPortal(node, container)
+    }
+
+    return node
   },
 )
 
