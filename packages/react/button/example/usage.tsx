@@ -68,6 +68,7 @@ const ButtonUsage: VFC = () => {
           <option value="outline">outline</option>
           <option value="text">text</option>
           <option value="text-same">text-same</option>
+          <option value="highlight">highlight</option>
         </select>
         <h3>color</h3>
         <select
@@ -77,6 +78,7 @@ const ButtonUsage: VFC = () => {
           }}
         >
           <option value="gray">gray</option>
+          <option value="blue">blue</option>
           <option value="red">red</option>
           <option value="green">green</option>
           <option value="orange">orange</option>

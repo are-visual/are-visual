@@ -30,6 +30,7 @@ export interface ButtonProps {
     | 'outline'
     | 'text'
     | 'text-same'
+    | 'highlight'
   /**
    * button Background color
    *
@@ -37,7 +38,7 @@ export interface ButtonProps {
    *
    * @default "gray"
    */
-  color?: 'gray' | 'red' | 'orange' | 'green' | 'none'
+  color?: 'gray' | 'blue' | 'red' | 'orange' | 'green' | 'none'
   /**
    * button Text color
    *
@@ -132,7 +133,8 @@ const ButtonComponent: ButtonComponentType = forwardRef<
           'are-btn-outline': variant === 'outline',
           'are-btn-text': variant === 'text',
           'are-btn-text-same': variant === 'text-same',
-          // 'are-btn-primary': color === 'primary',
+          'are-btn-highlight': variant === 'highlight',
+          'are-btn-blue': color === 'blue',
           'are-btn-red': color === 'red',
           'are-btn-orange': color === 'orange',
           'are-btn-green': color === 'green',

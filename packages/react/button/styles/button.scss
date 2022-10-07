@@ -33,10 +33,13 @@ $black-text: #292929;
     }
   }
 
-  &-primary {
-    --are-btn-color: var(--are-color-primary);
-    --are-btn-color-brighten: var(--are-color-primary-100);
-    --are-btn-color-darken: var(--are-color-primary-800);
+  &-blue {
+    --are-btn-text-color: #{$white-text};
+    --are-btn-color: var(--are-color-blue);
+    --are-btn-same-color: var(--are-color-blue-100);
+    --are-btn-border-color: var(--are-color-blue);
+    --are-btn-hover-color: var(--are-color-blue-600);
+    --are-btn-active-color: var(--are-color-blue-600);
   }
 
   &-red {
@@ -119,12 +122,22 @@ $black-text: #292929;
   }
 
   &-text-same {
-    color: var(--are-btn-same-color);
+    color: var(--are-btn-color);
     background-color: transparent;
     border: none;
 
     &:hover:not(.are-btn-disabled, .are-btn-loading) {
-      background-color: var(--are-btn-hover-color);
+      background-color: var(--are-btn-same-color);
+    }
+  }
+
+  &-highlight {
+    color: var(--are-btn-color);
+    background-color: transparent;
+    border: none;
+
+    &:hover:not(.are-btn-disabled, .are-btn-loading) {
+      background-color: #f3f3f3;
     }
   }
 
@@ -168,7 +181,7 @@ $black-text: #292929;
   &-loading {
     cursor: wait;
 
-    &::before {
+    &::before:not(.are-btn-text, .are-btn-text-same) {
       position: absolute;
       top: 0;
       left: 0;
