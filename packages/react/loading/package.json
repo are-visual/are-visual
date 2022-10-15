@@ -1,8 +1,0 @@
-{
-  "name": "@are-visual/react-loading",
-  "version": "0.0.1",
-  "dependencies": {
-    "@are-visual/resources": "workspace:^0.0.1",
-    "@are-visual/utils": "workspace:^0.0.1"
-  }
-}

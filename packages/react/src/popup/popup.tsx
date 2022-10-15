@@ -7,11 +7,6 @@ import {
   useSameTarget,
   useScrollLock,
 } from '@are-visual/react-hooks'
-import {
-  Overlay,
-  OverlayProps,
-  PureOverlayProps,
-} from '@are-visual/react-overlay'
 import cx from 'clsx'
 import CSSMotion from 'rc-motion'
 import canUseDom from 'rc-util/es/Dom/canUseDom'
@@ -26,6 +21,8 @@ import React, {
   useState,
 } from 'react'
 import { createPortal } from 'react-dom'
+
+import { Overlay, OverlayProps, PureOverlayProps } from '../overlay'
 
 export type PopupPosition =
   | 'top'

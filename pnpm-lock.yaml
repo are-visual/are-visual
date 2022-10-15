@@ -71,77 +71,20 @@ importers:
     specifiers: {}
 
   packages/react:
-    specifiers: {}
+    specifiers:
+      '@are-visual/react-hooks': workspace:^0.0.1
+      '@are-visual/resources': workspace:^0.0.1
+      '@are-visual/utils': workspace:^0.0.1
+    dependencies:
+      '@are-visual/react-hooks': link:../react-hooks
+      '@are-visual/resources': link:../resources
+      '@are-visual/utils': link:../utils
 
   packages/react-hooks:
     specifiers:
       '@are-visual/utils': workspace:^0.0.1
     dependencies:
       '@are-visual/utils': link:../utils
-
-  packages/react/button:
-    specifiers:
-      '@are-visual/react-dynamic-tag': workspace:^0.0.1
-      '@are-visual/react-loading': workspace:^0.0.1
-      '@are-visual/resources': workspace:^0.0.1
-      '@are-visual/utils': workspace:^0.0.1
-    dependencies:
-      '@are-visual/react-dynamic-tag': link:../dynamic-tag
-      '@are-visual/react-loading': link:../loading
-      '@are-visual/resources': link:../../resources
-      '@are-visual/utils': link:../../utils
-
-  packages/react/dynamic-tag:
-    specifiers:
-      '@are-visual/utils': workspace:^0.0.1
-    dependencies:
-      '@are-visual/utils': link:../../utils
-
-  packages/react/loading:
-    specifiers:
-      '@are-visual/resources': workspace:^0.0.1
-      '@are-visual/utils': workspace:^0.0.1
-    dependencies:
-      '@are-visual/resources': link:../../resources
-      '@are-visual/utils': link:../../utils
-
-  packages/react/modal:
-    specifiers:
-      '@are-visual/react-popup': workspace:^0.0.1
-      '@are-visual/resources': workspace:^0.0.1
-      '@are-visual/utils': workspace:^0.0.1
-    dependencies:
-      '@are-visual/react-popup': link:../popup
-      '@are-visual/resources': link:../../resources
-      '@are-visual/utils': link:../../utils
-
-  packages/react/overlay:
-    specifiers:
-      '@are-visual/react-hooks': workspace:^0.0.1
-      '@are-visual/utils': workspace:^0.0.1
-    dependencies:
-      '@are-visual/react-hooks': link:../../react-hooks
-      '@are-visual/utils': link:../../utils
-
-  packages/react/popup:
-    specifiers:
-      '@are-visual/react-hooks': workspace:^0.0.1
-      '@are-visual/react-overlay': workspace:^0.0.1
-      '@are-visual/styles': workspace:^0.0.1
-      '@are-visual/utils': workspace:^0.0.1
-    dependencies:
-      '@are-visual/react-hooks': link:../../react-hooks
-      '@are-visual/react-overlay': link:../overlay
-      '@are-visual/styles': link:../../styles
-      '@are-visual/utils': link:../../utils
-
-  packages/react/radio:
-    specifiers:
-      '@are-visual/react-hooks': workspace:^0.0.1
-      '@are-visual/utils': workspace:^0.0.1
-    dependencies:
-      '@are-visual/react-hooks': link:../../react-hooks
-      '@are-visual/utils': link:../../utils
 
   packages/resources:
     specifiers: {}

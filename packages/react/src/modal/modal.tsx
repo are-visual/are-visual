@@ -1,10 +1,11 @@
 import './styles/index.scss'
 
-import { Popup, PopupProps } from '@are-visual/react-popup'
 import { ReactComponent as CloseIcon } from '@are-visual/resources/close.svg'
 import type { Omit } from '@are-visual/utils'
 import cx from 'clsx'
 import React, { CSSProperties, forwardRef, ReactNode } from 'react'
+
+import { Popup, PopupProps } from '../popup'
 
 type InternalPopupProps = Omit<PopupProps, 'position'>
 
@@ -64,7 +65,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               type="button"
               onClick={onClose}
             >
-              <CloseIcon className="are-modal-close-icon" />
+              <span className="are-modal-close-hover">
+                <CloseIcon className="are-modal-close-icon" />
+              </span>
             </button>
           )}
         </header>
