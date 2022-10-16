@@ -1,5 +1,4 @@
 {
   "name": "@are-visual/utils",
-  "version": "0.0.1",
-  "main": "./src/index.ts"
+  "version": "0.0.1"
 }

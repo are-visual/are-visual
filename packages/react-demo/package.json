@@ -1,0 +1,7 @@
+{
+  "name": "@are-visual/react-demo",
+  "version": "0.0.1",
+  "dependencies": {
+    "@are-visual/react": "workspace:^0.0.1"
+  }
+}

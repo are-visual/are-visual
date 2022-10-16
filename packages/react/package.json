@@ -5,5 +5,9 @@
     "@are-visual/react-hooks": "workspace:^0.0.1",
     "@are-visual/resources": "workspace:^0.0.1",
     "@are-visual/utils": "workspace:^0.0.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   }
 }
