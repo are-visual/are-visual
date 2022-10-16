@@ -71,11 +71,11 @@ $black-text: #292929;
 
   &-gray {
     --are-btn-text-color: #{$black-text};
-    --are-btn-color: #eee;
-    --are-btn-same-color: #f3f3f3;
-    --are-btn-border-color: #eee;
-    --are-btn-hover-color: #eee;
-    --are-btn-active-color: #eee;
+    --are-btn-color: #f1f1f1;
+    --are-btn-same-color: #f1f1f1;
+    --are-btn-border-color: #ced4da;
+    --are-btn-hover-color: #f1f1f1;
+    --are-btn-active-color: #f1f1f1;
   }
 
   /* 背景填充色按钮 */
@@ -107,10 +107,10 @@ $black-text: #292929;
   &-outline {
     color: var(--are-btn-color);
     background-color: transparent;
-    border: 1px solid var(--are-btn-color);
+    border: 1px solid var(--are-btn-border-color);
 
     &:hover:not(.are-btn-disabled, .are-btn-loading) {
-      background-color: var(--are-btn-hover-color);
+      background-color: var(--are-btn-same-color);
     }
   }
 
@@ -166,10 +166,6 @@ $black-text: #292929;
     border-radius: var(--are-btn-rounded);
   }
 
-  &-gray-border {
-    border-color: #d9d9d9;
-  }
-
   &-text-light {
     color: $white-text;
   }
@@ -181,7 +177,7 @@ $black-text: #292929;
   &-loading {
     cursor: wait;
 
-    &::before:not(.are-btn-text, .are-btn-text-same) {
+    &::before {
       position: absolute;
       top: 0;
       left: 0;

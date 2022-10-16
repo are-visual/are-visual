@@ -144,7 +144,6 @@ const ButtonComponent: ButtonComponentType = forwardRef<
           'are-btn-large': size === 'large',
           'are-btn-middle': size === 'middle',
           'are-btn-small': size === 'small',
-          'are-btn-gray-border': color === 'gray' && variant === 'outline',
           'are-btn-rounded': rounded === true,
           'are-btn-remove-bg':
             (variant === 'text' || variant === 'text-same') && disabled,
