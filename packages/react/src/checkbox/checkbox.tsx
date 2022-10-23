@@ -13,6 +13,7 @@ import React, {
   ReactNode,
 } from 'react'
 
+import { useCheckboxCtx } from './context'
 import {
   checkboxInput,
   checkboxWrapper,
@@ -25,7 +26,7 @@ import {
 
 type NativeProps = Omit<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-  'value' | 'onChange'
+  'type' | 'value' | 'onChange'
 >
 
 type CheckboxRef = ForwardedRef<HTMLInputElement>
@@ -105,38 +106,47 @@ function Checkbox<T>(
   ref: CheckboxRef,
 ): ReactElement {
   const {
-    id: inputId,
+    id: idScoped,
     className,
     style,
-    disabled = false,
+    disabled: disabledScoped = false,
     children,
     defaultChecked = false,
+    name: nameScoped,
 
     value,
     checkedValue,
     uncheckedValue,
     onChange,
+    ...rest
   } = props as CheckboxProps<T>
 
-  const id = useId(inputId)
+  const ctx = useCheckboxCtx<T>()
+
+  const name = ctx?.name ?? nameScoped
+  const disabled = ctx?.disabled ?? disabledScoped
+
+  const id = useId(idScoped)
 
   const valueMode = 'value' in props
   const matchValueMode = valueMode
     ? false
     : 'checkedValue' in props && 'uncheckedValue' in props
 
-  const [checked, setChecked] = useControllableValue(props, {
+  const [checkedScoped, setChecked] = useControllableValue(props, {
     valuePropName: 'checked',
     defaultValue: matchValueMode ? value === checkedValue : defaultChecked,
     trigger: 'onCheckedChange',
   })
+  const checked = valueMode ? ctx?.isChecked(value as T) : checkedScoped
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const checkedStatus = e.target.checked
-    setChecked(checkedStatus)
     if (valueMode) {
+      ctx?.toggleValueChecked(value as T)
       onChange?.(value as T, e)
     } else {
+      const checkedStatus = e.target.checked
+      setChecked(checkedStatus)
       onChange?.(checkedStatus ? (checkedValue as T) : (uncheckedValue as T), e)
     }
   }
@@ -147,6 +157,8 @@ function Checkbox<T>(
     >
       <div className={cx('are-checkbox-inner', checkboxWrapper().className)}>
         <input
+          {...rest}
+          name={name}
           type="checkbox"
           id={id}
           ref={ref}
@@ -188,7 +200,7 @@ function Checkbox<T>(
   )
 }
 
-interface CheckboxComponent {
+export interface CheckboxComponent {
   <T = boolean>(
     props: CheckboxP1Props<T> & {
       ref?: ForwardedRef<HTMLInputElement>
