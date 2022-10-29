@@ -1,5 +1,6 @@
 import { useControllableValue, useId } from '@are-visual/react-hooks'
 import { ReactComponent as CheckedIcon } from '@are-visual/resources/check.svg'
+import { ReactComponent as IndeterminateIcon } from '@are-visual/resources/indeterminate.svg'
 import { Omit } from '@are-visual/utils'
 import cx from 'clsx'
 import CSSMotion from 'rc-motion'
@@ -113,6 +114,8 @@ function Checkbox<T>(
     children,
     defaultChecked = false,
     name: nameScoped,
+    indeterminate = false,
+    onCheckedChange: _onCheckedChange,
 
     value,
     checkedValue,
@@ -138,7 +141,9 @@ function Checkbox<T>(
     defaultValue: matchValueMode ? value === checkedValue : defaultChecked,
     trigger: 'onCheckedChange',
   })
+
   const checked = valueMode ? ctx?.isChecked(value as T) : checkedScoped
+  const isActive = checked || indeterminate
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (valueMode) {
@@ -164,7 +169,7 @@ function Checkbox<T>(
           ref={ref}
           className={cx(
             'are-checkbox-input',
-            checkboxInput({ checked, disabled }).className,
+            checkboxInput({ checked: isActive, disabled }).className,
           )}
           style={style}
           disabled={disabled}
@@ -173,7 +178,7 @@ function Checkbox<T>(
         />
         <CSSMotion
           key="are-checkbox-checked"
-          visible={checked}
+          visible={isActive}
           motionName={checkedMotion().className}
           forceRender
         >
@@ -187,7 +192,13 @@ function Checkbox<T>(
                 style={motion.style}
                 ref={motionRef}
               >
-                <CheckedIcon className={checkedIcon()} />
+                {checked ? (
+                  <CheckedIcon className={checkedIcon()} />
+                ) : (
+                  indeterminate && (
+                    <IndeterminateIcon className={checkedIcon()} />
+                  )
+                )}
               </span>
             )
           }}
