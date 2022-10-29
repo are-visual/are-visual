@@ -73,6 +73,14 @@ export interface PopupProps extends PureOverlayProps {
    * 渲染到指定 DOM 节点，默认渲染至 body
    */
   getContainer?: GetContainer
+  /**
+   * 是否强制渲染 DOM
+   *
+   * 只在 visible 第一次为 true 时渲染 DOM 节点
+   *
+   * @default false
+   */
+  forceRender?: boolean
   children?: ReactNode
 }
 
@@ -107,6 +115,7 @@ const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
       children,
       onClose,
       getContainer,
+      forceRender = false,
       ...rest
     } = props
 
@@ -154,9 +163,9 @@ const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
       position === 'left'
     const isCenter = position === 'center' || position === 'x-center'
     const positionClass = position ? `are-popup-body-${position}` : ''
-    const motionName = scopedMotionName ?? POPUP_MOTION_NAME[position || '']
+    const motionName = scopedMotionName ?? POPUP_MOTION_NAME[position!]
 
-    const container = usePortal(visible, getContainer)
+    const container = usePortal({ visible, forceRender, getContainer })
     const node = (
       <div
         className="are-popup-root"
@@ -186,6 +195,7 @@ const PopupComponent = forwardRef<HTMLDivElement, PopupPropsWithNative>(
             visible={visible}
             motionName={motionName}
             removeOnLeave={destroyable}
+            forceRender={forceRender}
             onVisibleChanged={handleVisibleChanged}
           >
             {(

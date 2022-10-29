@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import createPortalContainer, {
   ContainerType,
@@ -6,7 +6,17 @@ import createPortalContainer, {
   getPortalContainer,
 } from './portal'
 
-function usePortal(visible: boolean, getContainer?: GetContainer) {
+interface PortalOptions {
+  visible: boolean
+  /** 强制渲染 */
+  forceRender?: boolean
+  /** 使用外部的渲染容器 */
+  getContainer?: GetContainer
+}
+
+function usePortal(options: PortalOptions) {
+  const { visible, forceRender, getContainer } = options
+
   const [container, setContainer] = useState(() => {
     if (getContainer === undefined) return undefined
     return getPortalContainer(getContainer)
@@ -25,11 +35,14 @@ function usePortal(visible: boolean, getContainer?: GetContainer) {
     setContainer(getPortalContainer(getContainer) ?? null)
   }, [getContainer])
 
+  const isAppended = useRef(false)
   useLayoutEffect(() => {
-    if (!visible || !defaultContainer) return
+    if (isAppended.current) return
+    if ((!visible && !forceRender) || !defaultContainer) return
     if (renderInline || !notContainer) return
+    isAppended.current = true
     document.body.appendChild(defaultContainer)
-  }, [defaultContainer, notContainer, renderInline, visible])
+  }, [defaultContainer, notContainer, renderInline, visible, forceRender])
 
   if (notContainer) return defaultContainer
 
