@@ -28,6 +28,14 @@ export const checkboxWrapper = css({
   width: 18,
   height: 18,
   color: '#fff',
+  flex: 'none',
+  variants: {
+    disabled: {
+      true: {
+        color: 'rgba(0,0,0,.4)',
+      },
+    },
+  },
 })
 
 export const checkedIconWrapper = css({
