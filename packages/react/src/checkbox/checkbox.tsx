@@ -16,13 +16,13 @@ import React, {
 
 import { useCheckboxCtx } from './context'
 import {
+  checkbox,
+  checkboxInner,
   checkboxInput,
-  checkboxWrapper,
   checkedIcon,
   checkedIconWrapper,
   checkedMotion,
   label,
-  root,
 } from './styles'
 
 type NativeProps = Omit<
@@ -158,9 +158,13 @@ function Checkbox<T>(
 
   return (
     <div
-      className={cx('are-checkbox', className, root({ disabled }).className)}
+      className={cx(
+        'are-checkbox',
+        className,
+        checkbox({ disabled }).className,
+      )}
     >
-      <div className={cx('are-checkbox-inner', checkboxWrapper().className)}>
+      <div className={cx('are-checkbox-inner', checkboxInner().className)}>
         <input
           {...rest}
           name={name}
@@ -169,7 +173,11 @@ function Checkbox<T>(
           ref={ref}
           className={cx(
             'are-checkbox-input',
-            checkboxInput({ checked: isActive, disabled }).className,
+            checkboxInput({
+              checked: !disabled && isActive,
+              disabled,
+              checkedDisabled: disabled && isActive,
+            }).className,
           )}
           style={style}
           disabled={disabled}
@@ -204,7 +212,10 @@ function Checkbox<T>(
           }}
         </CSSMotion>
       </div>
-      <label className={label({ disabled })} htmlFor={id}>
+      <label
+        className={cx('are-checkbox-label', label({ disabled }).className)}
+        htmlFor={id}
+      >
         {children}
       </label>
     </div>

@@ -1,6 +1,6 @@
 import { css, keyframes } from '@stitches/react'
 
-export const root = css({
+export const checkbox = css({
   display: 'inline-flex',
   alignItems: 'flex-start',
   lineHeight: '18px',
@@ -23,7 +23,7 @@ export const label = css({
   cursor: 'inherit',
 })
 
-export const checkboxWrapper = css({
+export const checkboxInner = css({
   position: 'relative',
   width: 18,
   height: 18,
@@ -127,6 +127,16 @@ export const checkboxInput = css({
       true: {
         borderColor: 'var(--are-color-blue)',
         backgroundColor: 'var(--are-color-blue)',
+
+        '&::before': {
+          transform: 'scale(0)',
+        },
+      },
+    },
+    checkedDisabled: {
+      true: {
+        borderColor: '#ccc',
+        backgroundColor: '#ddd',
 
         '&::before': {
           transform: 'scale(0)',
