@@ -1,6 +1,5 @@
+import createPortalContainer from '@are-visual/portal-hosts'
 import canUseDom from 'rc-util/es/Dom/canUseDom'
-
-let container: HTMLDivElement | null = null
 
 export type ContainerType = Element
 
@@ -26,14 +25,6 @@ export function getPortalContainer(getContainer: GetContainer) {
   }
 
   return getContainer
-}
-
-function createPortalContainer() {
-  if (container) return container
-  const node = document.createElement('div')
-  node.className = 'are-portal-hosts'
-  container = node
-  return node
 }
 
 export default createPortalContainer
