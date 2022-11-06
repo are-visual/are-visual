@@ -4,7 +4,7 @@ import { useIsomorphicEffect, useScrollLock } from '@are-visual/react-hooks'
 import cx from 'clsx'
 import CSSMotion from 'rc-motion'
 import canUseDom from 'rc-util/es/Dom/canUseDom'
-import React, { FC, HTMLAttributes } from 'react'
+import React, { FC, HTMLAttributes, useEffect } from 'react'
 
 export interface PureOverlayProps {
   /**
@@ -58,6 +58,8 @@ const Overlay: FC<OverlayProps> = (props) => {
     if (!lockScroll || !canUseDom()) return
     lock(!!visible)
   }, [lockScroll, lock, visible])
+
+  useEffect(() => () => lock(false), [lock])
 
   return (
     <CSSMotion
