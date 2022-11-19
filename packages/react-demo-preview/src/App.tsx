@@ -1,78 +1,43 @@
 import '@are-visual/styles/var/default-var.scss'
 import '@are-visual/styles/index.scss'
 
-import { css, globalCss } from '@stitches/react'
-import { createElement, Suspense } from 'react'
+import { ReactComponent as Logo } from '@are-visual/logo/are-visual.svg'
+import clsx from 'clsx'
+import { Suspense } from 'react'
 import {
   createBrowserRouter,
-  Link,
+  NavLink,
   Outlet,
-  RouteObject,
   RouterProvider,
 } from 'react-router-dom'
 
-const modules = import.meta.globEager('../../react-demo/src/*/*.tsx')
-
-const routes = Object.keys(modules).map((key): RouteObject => {
-  const val = key.split('/')
-  const moduleName = val[val.length - 2]
-  const routeName = val[val.length - 1].replace(/\s/, '-').replace(/.tsx/, '')
-  const element = modules[key]
-
-  return {
-    path: `/${moduleName}/${routeName}`,
-    element: <>{createElement(element.default)}</>,
-  }
-})
-
-const container = css({
-  display: 'flex',
-  height: '100%',
-})
-
-const sidebar = css({
-  display: 'flex',
-  flexDirection: 'column',
-  flex: 'none',
-  width: 200,
-  padding: 16,
-  borderRight: '1px solid #f1f1f1',
-  '& a + a': {
-    marginTop: 8,
-  },
-})
-
-const globalStyles = globalCss({
-  'html,body,#root': {
-    minHeight: '100%',
-    height: '100%',
-    fontFamily: `-apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-    'Helvetica', 'Arial', 'PingFang SC', 'Microsoft YaHei',
-    'WenQuanYi Micro Hei', sans-serif`,
-  },
-  body: {
-    margin: 0,
-    minHeight: '100%',
-    height: '100%',
-    boxSizing: 'border-box',
-  },
-})
+import routes, { sideMenu } from './router'
 
 function Root() {
-  globalStyles()
-
   return (
-    <main className={container()}>
-      <div className={sidebar()}>
-        {routes.map((item) => {
+    <main className="h-full min-h-full">
+      <aside className="border-box fixed top-0 left-0 h-full w-[240px] p-[16px] overflow-y-auto text-[14px] text-[#212121] bg-[#f9f9f9]">
+        <a className="flex items-center px-[16px] pt-[14px] pb-[20px]" href="/">
+          <Logo className="h-[30px]" />
+          <h1 className="ml-[10px] text-[20px] font-semibold">Are Visual</h1>
+        </a>
+        {sideMenu.map((item) => {
           return (
-            <Link key={item.path} to={item.path!}>
-              {item.path}
-            </Link>
+            <NavLink
+              key={item.path}
+              className={({ isActive }) => {
+                return clsx('block py-[4px] px-[16px]', {
+                  'text-primary': isActive,
+                })
+              }}
+              to={item.path!}
+            >
+              {item.title}
+            </NavLink>
           )
         })}
-      </div>
-      <div style={{ flexGrow: 1, padding: 16 }}>
+      </aside>
+      <div className="flex flex-col pl-[240px] h-full min-h-full">
         <Outlet />
       </div>
     </main>
