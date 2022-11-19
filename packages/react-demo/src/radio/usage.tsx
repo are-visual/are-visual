@@ -1,7 +1,7 @@
 import { Radio, RadioGroupProps } from '@are-visual/react'
-import { useState, VFC } from 'react'
+import { FC, useState } from 'react'
 
-const RadioUsage: VFC = () => {
+const RadioUsage: FC = () => {
   const [disabled, setDisabled] = useState(false)
   const [direction, setDirection] =
     useState<RadioGroupProps<unknown>['direction']>('x')

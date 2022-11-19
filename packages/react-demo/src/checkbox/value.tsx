@@ -1,6 +1,6 @@
 import { Checkbox } from '@are-visual/react'
 import { css } from '@stitches/react'
-import { useMemo, useState, VFC } from 'react'
+import { FC, useMemo, useState } from 'react'
 
 const spaceX = css({
   '> :not([hidden]) ~ :not([hidden])': {
@@ -15,7 +15,7 @@ const options = [
   { value: 4, label: '肆' },
 ]
 
-const Basic: VFC = () => {
+const Basic: FC = () => {
   const [value, setValue] = useState([1, 3])
 
   const checkedState = useMemo(() => {

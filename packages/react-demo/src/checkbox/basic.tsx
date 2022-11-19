@@ -1,6 +1,6 @@
 import { Checkbox } from '@are-visual/react'
 import { css } from '@stitches/react'
-import { useState, VFC } from 'react'
+import { FC, useState } from 'react'
 
 const spaceY = css({
   '> :not([hidden]) ~ :not([hidden])': {
@@ -8,7 +8,7 @@ const spaceY = css({
   },
 })
 
-const Basic: VFC = () => {
+const Basic: FC = () => {
   const [disabled, setDisabled] = useState(false)
   const [checked, setChecked] = useState(false)
   const [val, setVal] = useState(1)

@@ -7,6 +7,8 @@
   "scripts": {
     "play": "pnpm -C playground dev",
     "demo": "pnpm -C packages/react-demo-preview dev",
+    "lint": "eslint \"packages/**/*.{ts,tsx,js}\"",
+    "lint:fix": "yarn lint --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

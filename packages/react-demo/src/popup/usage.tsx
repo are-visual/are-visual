@@ -1,7 +1,7 @@
 import { Button, Popup, PopupPosition } from '@are-visual/react'
-import { useState, VFC } from 'react'
+import { FC, useState } from 'react'
 
-const Usage: VFC = () => {
+const Usage: FC = () => {
   const [visible, setVisible] = useState(false)
   const [position, setPosition] = useState<PopupPosition>('center')
 

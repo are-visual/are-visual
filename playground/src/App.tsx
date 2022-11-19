@@ -1,6 +1,6 @@
-import { VFC } from 'react'
+import { FC } from 'react'
 
-const App: VFC = () => {
+const App: FC = () => {
   return (
     <div>
       <h2>AreVisual - Playground</h2>

@@ -1,9 +1,8 @@
-import { Button, Overlay } from '@are-visual/react'
+import { Button, Portal } from '@are-visual/react'
 import { FC, useState } from 'react'
 
-const ButtonUsage: FC = () => {
+const Usage: FC = () => {
   const [visible, setVisible] = useState(false)
-
   return (
     <section
       style={{
@@ -23,11 +22,25 @@ const ButtonUsage: FC = () => {
           padding: 16,
         }}
       >
-        <Button onClick={() => setVisible(true)}>Open</Button>
-        <Overlay visible={visible} onClick={() => setVisible(false)} />
+        <div id="foo" />
+        <Button
+          onClick={() => {
+            setVisible((v) => !v)
+          }}
+        >
+          Click
+        </Button>
+        <Portal visible={visible} target="#foo">
+          {visible && (
+            <>
+              <p>123</p>
+              <p>456</p>
+            </>
+          )}
+        </Portal>
       </div>
     </section>
   )
 }
 
-export default ButtonUsage
+export default Usage

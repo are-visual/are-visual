@@ -1,7 +1,7 @@
 import { Button, Modal } from '@are-visual/react'
-import { useState, VFC } from 'react'
+import { FC, useState } from 'react'
 
-const Usage: VFC = () => {
+const Usage: FC = () => {
   const [visible, setVisible] = useState(false)
 
   return (
@@ -28,7 +28,6 @@ const Usage: VFC = () => {
           visible={visible}
           onClose={() => setVisible(false)}
           title="系统设置"
-          closeOnClickOutside={false}
           // centered
           style={{
             width: 540,

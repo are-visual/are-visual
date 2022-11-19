@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from '@are-visual/react'
-import { useState, VFC } from 'react'
+import { FC, useState } from 'react'
 
-const ButtonUsage: VFC = () => {
+const ButtonUsage: FC = () => {
   const [variant, setVariant] = useState<ButtonProps['variant']>('default')
   const [color, setColor] = useState<ButtonProps['color']>('gray')
   const [size, setSize] = useState<ButtonProps['size']>('middle')

@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from '@are-visual/react'
-import { useState, VFC } from 'react'
+import { FC, useState } from 'react'
 
 const variant: ButtonProps['variant'][] = [
   'default',
@@ -11,7 +11,7 @@ const variant: ButtonProps['variant'][] = [
   'text',
 ]
 
-const ButtonUsage: VFC = () => {
+const ButtonUsage: FC = () => {
   const [color, setColor] = useState<ButtonProps['color']>('gray')
   const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(false)
