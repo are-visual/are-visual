@@ -1,5 +1,5 @@
-import cx, { clsx } from 'clsx'
-import { FC, Fragment, ReactNode } from 'react'
+import clsx from 'clsx'
+import { FC, Fragment, ReactNode, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 export interface ContentConfig {
@@ -15,6 +15,10 @@ export interface ContentProps {
 const Content: FC<ContentProps> = (props) => {
   const { title, contentConfig } = props
   const { hash } = useLocation()
+
+  useEffect(() => {
+    document.title = `${title} - Are Visual`
+  }, [title])
 
   return (
     <>
