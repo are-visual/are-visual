@@ -33,7 +33,7 @@ export default defineConfig(({ mode }) => {
         },
         {
           find: '@are-visual/react-hooks',
-          replacement: `@are-visual/react-hooks/src`,
+          replacement: `@are-visual/react-hooks`,
         },
         {
           find: '@are-visual/shared',
