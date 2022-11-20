@@ -190,7 +190,10 @@ importers:
     specifiers: {}
 
   packages/styles:
-    specifiers: {}
+    specifiers:
+      '@are-visual/style-inject': workspace:^0.0.1
+    dependencies:
+      '@are-visual/style-inject': link:../style-inject
 
   packages/utils:
     specifiers: {}

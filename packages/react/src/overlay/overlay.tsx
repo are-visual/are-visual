@@ -1,5 +1,5 @@
 import './styles/index.scss'
-import '@are-visual/styles/motion/fade.scss'
+import '@are-visual/styles/motion/fade'
 
 import { useIsomorphicEffect, useScrollLock } from '@are-visual/react-hooks'
 import cx from 'clsx'
@@ -74,7 +74,7 @@ const Overlay: FC<OverlayProps> = (props) => {
         <div
           {...rest}
           style={{ ...motionStyle, ...style, zIndex }}
-          className={cx('are-overlay', motionClassName)}
+          className={cx('are-overlay', className, motionClassName)}
         />
       )}
     </CSSMotion>

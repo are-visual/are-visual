@@ -1,5 +1,5 @@
-import '@are-visual/styles/var/default-var.scss'
-import '@are-visual/styles/index.scss'
+import '@are-visual/styles/var/default-var'
+import '@are-visual/styles/index'
 
 import { ReactComponent as Logo } from '@are-visual/logo/are-visual.svg'
 import clsx from 'clsx'

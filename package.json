@@ -10,6 +10,8 @@
     "lint": "eslint \"packages/**/*.{ts,tsx,js}\"",
     "lint:fix": "pnpm lint --fix",
     "build": "esno ./scripts/build",
+    "prebuild:style": "pnpm -F @are-visual/styles prebuild",
+    "build:style": "pnpm -F @are-visual/styles build",
     "gen:icon": "pnpm -F @are-visual/icon build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

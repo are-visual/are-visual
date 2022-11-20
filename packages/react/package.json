@@ -10,7 +10,7 @@
     "@are-visual/utils": "workspace:^0.0.1"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=16.14.0",
+    "react-dom": ">=16.14.0"
   }
 }

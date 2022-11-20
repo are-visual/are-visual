@@ -1,6 +1,6 @@
 import './styles/index.scss'
-import '@are-visual/styles/motion/slide.scss'
-import '@are-visual/styles/motion/zoom-in.scss'
+import '@are-visual/styles/motion/slide'
+import '@are-visual/styles/motion/zoom-in'
 
 import {
   useIsomorphicEffect,

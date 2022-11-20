@@ -18,11 +18,11 @@ class Logger {
   }
 
   success(message: string, breaks = 1) {
-    this.log(`${chalk.green('✓')} ${message}`, breaks)
+    this.log(`${chalk.green('✓')} ${chalk.green(message)}`, breaks)
   }
 
   error(message: string, breaks = 1) {
-    this.log(`${chalk.red('✗')} ${message}`, breaks)
+    this.log(`${chalk.red('✗')} ${chalk.red(message)}`, breaks)
   }
 }
 

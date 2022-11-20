@@ -43,6 +43,10 @@ export default defineConfig(({ mode }) => {
           find: '@are-visual/utils',
           replacement: `@are-visual/utils/src`,
         },
+        {
+          find: '@are-visual/styles',
+          replacement: `@are-visual/styles/src`,
+        },
       ],
     },
     plugins: [react(), svgr()],

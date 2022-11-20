@@ -41,6 +41,7 @@ export function createRollupConfig(packagePath: string): RollupOptions {
       '@are-visual/icon',
       '@are-visual/utils',
       '@are-visual/style-inject',
+      /^@are-visual\/styles/,
       'lodash-es',
       'react',
       'react-dom',
@@ -53,7 +54,7 @@ export function createRollupConfig(packagePath: string): RollupOptions {
       del({ targets: `${path.resolve(packagePath, 'dist/*')}` }),
       // @ts-ignore
       postcss({
-        extensions: ['css'],
+        extensions: ['.css', '.scss'],
         sourceMap: false,
         minimize: true,
         inject: (cssStr) =>

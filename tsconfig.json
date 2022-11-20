@@ -19,6 +19,7 @@
     "rootDir": ".",
     "types": ["node"],
     "paths": {
+      "@are-visual/styles/*": ["packages/styles/src/*"],
       "@are-visual/*": ["packages/*/src"],
     }
   },
