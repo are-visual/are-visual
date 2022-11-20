@@ -1,0 +1,144 @@
+.are-checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+
+  &-label {
+    padding-left: 8px;
+    cursor: inherit;
+  }
+
+  &-inner {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    font: none;
+    color: #fff;
+  }
+
+  &-icon-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    pointer-events: none;
+  }
+
+  &-icon {
+    display: block;
+    width: 1em;
+    height: 1em;
+    font-size: 10px;
+    fill: currentcolor;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .are-checkbox-icon-wrap,
+    .are-checkbox-inner {
+      color: rgb(0 0 0 / 40%);
+    }
+  }
+}
+
+.are-checkbox-input {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: inherit;
+  background-color: #fff;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  outline: 0;
+  transition: background-color 0.2s ease-in, border-color 0.2s ease-in;
+  appearance: none;
+
+  &:hover {
+    border-color: var(--are-color-blue);
+  }
+
+  &::before {
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: #fff;
+    border-radius: inherit;
+    transition: transform 0.2s ease-in;
+    transform: scale(1);
+  }
+
+  &-checked {
+    background-color: var(--are-color-blue);
+    border-color: var(--are-color-blue);
+
+    &::before {
+      transform: scale(0);
+    }
+  }
+
+  &-checked-disabled {
+    background-color: #ddd;
+    border-color: #ccc;
+
+    &::before {
+      transform: scale(0);
+    }
+  }
+
+  &-disabled {
+    background-color: #ddd;
+    border-color: #ccc;
+
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+}
+
+.are-checkbox-motion {
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    animation: are-checkbox-keyframes 0.24s cubic-bezier(0.22, 0.61, 0.36, 1);
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+  }
+
+  &-leave {
+    animation: are-checkbox-keyframes 0.24s 0.24s
+      cubic-bezier(0.22, 0.61, 0.36, 1) reverse;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes are-checkbox-keyframes {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  90% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

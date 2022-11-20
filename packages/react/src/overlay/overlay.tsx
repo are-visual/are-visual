@@ -1,4 +1,5 @@
 import './styles/index.scss'
+import '@are-visual/styles/motion/fade.scss'
 
 import { useIsomorphicEffect, useScrollLock } from '@are-visual/react-hooks'
 import cx from 'clsx'

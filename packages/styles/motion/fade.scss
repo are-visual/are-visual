@@ -5,6 +5,7 @@
 
   &-leave {
     animation: are-fade-in 0.24s linear reverse;
+    animation-fill-mode: forwards;
   }
 }
 

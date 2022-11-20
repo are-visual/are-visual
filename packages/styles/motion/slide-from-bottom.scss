@@ -5,6 +5,7 @@
 
   &-leave {
     animation: are-slide-from-bottom 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) reverse;
+    animation-fill-mode: forwards;
   }
 }
 

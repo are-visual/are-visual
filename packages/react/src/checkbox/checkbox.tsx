@@ -1,3 +1,5 @@
+import './styles/index.scss'
+
 import {
   Check as CheckedIcon,
   Indeterminate as IndeterminateIcon,
@@ -17,15 +19,15 @@ import React, {
 } from 'react'
 
 import { useCheckboxCtx } from './context'
-import {
-  checkbox,
-  checkboxInner,
-  checkboxInput,
-  checkedIcon,
-  checkedIconWrapper,
-  checkedMotion,
-  label,
-} from './styles'
+// import {
+//   checkbox,
+//   checkboxInner,
+//   checkboxInput,
+//   checkedIcon,
+//   checkedIconWrapper,
+//   checkedMotion,
+//   label,
+// } from './styles'
 
 type NativeProps = Omit<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
@@ -162,11 +164,17 @@ function Checkbox<T>(
     <div
       className={cx(
         'are-checkbox',
+        { 'are-checkbox-disabled': disabled },
         className,
-        checkbox({ disabled }).className,
+        // checkbox({ disabled }).className,
       )}
     >
-      <div className={cx('are-checkbox-inner', checkboxInner().className)}>
+      <div
+        className={cx(
+          'are-checkbox-inner',
+          // checkboxInner().className
+        )}
+      >
         <input
           {...rest}
           name={name}
@@ -175,11 +183,16 @@ function Checkbox<T>(
           ref={ref}
           className={cx(
             'are-checkbox-input',
-            checkboxInput({
-              checked: !disabled && isActive,
-              disabled,
-              checkedDisabled: disabled && isActive,
-            }).className,
+            {
+              'are-checkbox-input-checked': !disabled && isActive,
+              'are-checkbox-input-checked-disabled': disabled && isActive,
+              'are-checkbox-input-disabled': disabled,
+            },
+            // checkboxInput({
+            //   checked: !disabled && isActive,
+            //   disabled,
+            //   checkedDisabled: disabled && isActive,
+            // }).className,
           )}
           style={style}
           disabled={disabled}
@@ -189,7 +202,10 @@ function Checkbox<T>(
         <CSSMotion
           key="are-checkbox-checked"
           visible={isActive}
-          motionName={checkedMotion().className}
+          motionName={
+            // checkedMotion().className
+            'are-checkbox-motion'
+          }
           forceRender
         >
           {(motion, motionRef) => {
@@ -197,16 +213,17 @@ function Checkbox<T>(
               <span
                 className={cx(
                   motion.className,
-                  checkedIconWrapper({ disabled }).className,
+                  'are-checkbox-icon-wrap',
+                  // checkedIconWrapper({ disabled }).className,
                 )}
                 style={motion.style}
                 ref={motionRef}
               >
                 {checked ? (
-                  <CheckedIcon className={checkedIcon()} />
+                  <CheckedIcon className="are-checkbox-icon" />
                 ) : (
                   indeterminate && (
-                    <IndeterminateIcon className={checkedIcon()} />
+                    <IndeterminateIcon className="are-checkbox-icon" />
                   )
                 )}
               </span>
@@ -215,7 +232,10 @@ function Checkbox<T>(
         </CSSMotion>
       </div>
       <label
-        className={cx('are-checkbox-label', label({ disabled }).className)}
+        className={cx(
+          'are-checkbox-label',
+          //  label({ disabled }).className
+        )}
         htmlFor={id}
       >
         {children}
