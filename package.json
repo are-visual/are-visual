@@ -10,7 +10,7 @@
     "lint": "eslint \"packages/**/*.{ts,tsx,js}\"",
     "lint:fix": "pnpm lint --fix",
     "build": "esno ./scripts/build",
-    "es": "esno ./scripts/utils/get-style-inject",
+    "gen:icon": "pnpm -F @are-visual/icon build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

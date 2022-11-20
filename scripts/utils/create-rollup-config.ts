@@ -38,7 +38,7 @@ export function createRollupConfig(packagePath: string): RollupOptions {
       '@are-visual/styles',
       '@are-visual/portal-hosts',
       '@are-visual/react-hooks',
-      '@are-visual/resources',
+      '@are-visual/icon',
       '@are-visual/utils',
       '@are-visual/style-inject',
       'lodash-es',

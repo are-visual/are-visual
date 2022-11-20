@@ -1,13 +1,13 @@
 import './styles/index.scss'
 
-import { ReactComponent as CloseIcon } from '@are-visual/resources/close.svg'
+import { Close as CloseIcon } from '@are-visual/icon'
 import type { Omit } from '@are-visual/utils'
 import cx from 'clsx'
 import React, { CSSProperties, forwardRef, ReactNode } from 'react'
 
 import { Popup, PopupProps } from '../popup'
 
-type InternalPopupProps = Omit<PopupProps, 'position'>
+type InternalPopupProps = Omit<PopupProps, 'position' | 'title'>
 
 export interface ModalProps extends InternalPopupProps {
   title?: ReactNode

@@ -2,9 +2,9 @@
   "name": "@are-visual/react",
   "version": "0.0.1",
   "dependencies": {
+    "@are-visual/icon": "workspace:^0.0.1",
     "@are-visual/portal-hosts": "workspace:^0.0.1",
     "@are-visual/react-hooks": "workspace:^0.0.1",
-    "@are-visual/resources": "workspace:^0.0.1",
     "@are-visual/style-inject": "workspace:^0.0.1",
     "@are-visual/styles": "workspace:^0.0.1",
     "@are-visual/utils": "workspace:^0.0.1"

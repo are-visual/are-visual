@@ -1,6 +1,8 @@
+import {
+  Check as CheckedIcon,
+  Indeterminate as IndeterminateIcon,
+} from '@are-visual/icon'
 import { useControllableValue, useId } from '@are-visual/react-hooks'
-import { ReactComponent as CheckedIcon } from '@are-visual/resources/check.svg'
-import { ReactComponent as IndeterminateIcon } from '@are-visual/resources/indeterminate.svg'
 import { Omit } from '@are-visual/utils'
 import cx from 'clsx'
 import CSSMotion from 'rc-motion'

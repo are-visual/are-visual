@@ -24,6 +24,22 @@ export default defineConfig(({ mode }) => {
           replacement: `@are-visual/react/src`,
         },
         {
+          find: '@are-visual/icon',
+          replacement: `@are-visual/icon/src`,
+        },
+        {
+          find: '@are-visual/portal-hosts',
+          replacement: `@are-visual/portal-hosts/src`,
+        },
+        {
+          find: '@are-visual/react-hooks',
+          replacement: `@are-visual/react-hooks/src`,
+        },
+        {
+          find: '@are-visual/shared',
+          replacement: `@are-visual/shared/src`,
+        },
+        {
           find: '@are-visual/utils',
           replacement: `@are-visual/utils/src`,
         },

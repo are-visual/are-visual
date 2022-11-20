@@ -115,6 +115,12 @@ importers:
       tslib: 2.4.1
       typescript: 4.9.3
 
+  packages/icon:
+    specifiers:
+      '@svgr/cli': ^6.5.1
+    devDependencies:
+      '@svgr/cli': 6.5.1
+
   packages/logo:
     specifiers: {}
 
@@ -123,16 +129,16 @@ importers:
 
   packages/react:
     specifiers:
+      '@are-visual/icon': workspace:^0.0.1
       '@are-visual/portal-hosts': workspace:^0.0.1
       '@are-visual/react-hooks': workspace:^0.0.1
-      '@are-visual/resources': workspace:^0.0.1
       '@are-visual/style-inject': workspace:^0.0.1
       '@are-visual/styles': workspace:^0.0.1
       '@are-visual/utils': workspace:^0.0.1
     dependencies:
+      '@are-visual/icon': link:../icon
       '@are-visual/portal-hosts': link:../portal-hosts
       '@are-visual/react-hooks': link:../react-hooks
-      '@are-visual/resources': link:../resources
       '@are-visual/style-inject': link:../style-inject
       '@are-visual/styles': link:../styles
       '@are-visual/utils': link:../utils
@@ -1810,6 +1816,24 @@ packages:
       '@svgr/babel-plugin-transform-react-native-svg': 6.5.1_@babel+core@7.20.2
       '@svgr/babel-plugin-transform-svg-component': 6.5.1_@babel+core@7.20.2
 
+  /@svgr/cli/6.5.1:
+    resolution: {integrity: sha512-HdxcV0NeySUU25/wQ1smXspDc7S8Z+TLt3K7pSrEO2FiLVglCRBX5gw+yROGXrcHH5p2Ui4A0xo/pdshfVbBuA==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      '@svgr/core': 6.5.1
+      '@svgr/plugin-jsx': 6.5.1_@svgr+core@6.5.1
+      '@svgr/plugin-prettier': 6.5.1_@svgr+core@6.5.1
+      '@svgr/plugin-svgo': 6.5.1_@svgr+core@6.5.1
+      camelcase: 6.3.0
+      chalk: 4.1.2
+      commander: 9.4.1
+      dashify: 2.0.0
+      glob: 8.0.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@svgr/core/6.5.1:
     resolution: {integrity: sha512-/xdLSWxK5QkqG524ONSjvg3V/FkNyCv538OIBdQqPNaAta3AsXj/Bd2FbvR87yMbXO2hFSWiAe/Q6IkVPDw+mw==}
     engines: {node: '>=10'}
@@ -1842,6 +1866,17 @@ packages:
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
+
+  /@svgr/plugin-prettier/6.5.1_@svgr+core@6.5.1:
+    resolution: {integrity: sha512-nJTtamrxQjsHcP9vb5PVBiaVW9kEtAt0hzGK8e4+zbaIUHq6RPeR8+SvYaAbIIn1TExFszFuZSz1U08UX7kz7w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@svgr/core': '*'
+    dependencies:
+      '@svgr/core': 6.5.1
+      deepmerge: 4.2.2
+      prettier: 2.7.1
+    dev: true
 
   /@svgr/plugin-svgo/6.5.1_@svgr+core@6.5.1:
     resolution: {integrity: sha512-omvZKf8ixP9z6GWgwbtmP9qQMPX4ODXi+wzbVZgomNFsUIlHA1sf4fThdwTWSsZGgvGAG6yE+b/F5gWUkcZ/iQ==}
@@ -2375,6 +2410,12 @@ packages:
       concat-map: 0.0.1
     dev: true
 
+  /brace-expansion/2.0.1:
+    resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
+    dependencies:
+      balanced-match: 1.0.2
+    dev: true
+
   /braces/3.0.2:
     resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
     engines: {node: '>=8'}
@@ -2566,6 +2607,11 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
+  /commander/9.4.1:
+    resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==}
+    engines: {node: ^12.20.0 || >=14}
+    dev: true
+
   /commondir/1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
     dev: true
@@ -2736,6 +2782,11 @@ packages:
 
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
+    dev: true
+
+  /dashify/2.0.0:
+    resolution: {integrity: sha512-hpA5C/YrPjucXypHPPc0oJ1l9Hf6wWbiOL7Ik42cxnsUOhWiCB/fylKbKqqJalW9FgkNQCw16YO8uW9Hs0Iy1A==}
+    engines: {node: '>=4'}
     dev: true
 
   /debug/2.6.9:
@@ -3919,6 +3970,17 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
+  /glob/8.0.3:
+    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 5.1.0
+      once: 1.4.0
+    dev: true
+
   /global-modules/2.0.0:
     resolution: {integrity: sha512-NGbfmJBp9x8IxyJSd1P+otYK8vonoJactOogrVfFRIAEY1ukil8RSKDz2Yo7wh1oihl51l/r6W4epkeKJHqL8A==}
     engines: {node: '>=6'}
@@ -4556,6 +4618,13 @@ packages:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
       brace-expansion: 1.1.11
+    dev: true
+
+  /minimatch/5.1.0:
+    resolution: {integrity: sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
     dev: true
 
   /minimist-options/4.1.0:

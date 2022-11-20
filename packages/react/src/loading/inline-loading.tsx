@@ -1,6 +1,6 @@
 import './styles/inline-loading.scss'
 
-import { ReactComponent as LoadingIcon } from '@are-visual/resources/loading.svg'
+import { Loading as LoadingIcon } from '@are-visual/icon'
 import cx from 'clsx'
 import CSSMotion from 'rc-motion'
 import type { FC } from 'react'
