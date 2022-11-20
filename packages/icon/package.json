@@ -7,7 +7,7 @@
     "svgr": "npx @svgr/cli --out-dir src --index-template ./template/default-index.js --jsx-runtime automatic --icon --no-dimensions --typescript -- assets"
   },
   "buildOptions": {
-    "entry": "./src/index.ts"
+    "cmd": "build"
   },
   "devDependencies": {
     "@svgr/cli": "^6.5.1"
