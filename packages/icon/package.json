@@ -1,15 +1,17 @@
 {
   "name": "@are-visual/icon",
   "version": "0.0.1",
+  "main": "./src/index.ts",
   "scripts": {
     "build": "pnpm svgr && pnpm lint",
     "lint": "eslint \"src/**/*.{ts,tsx,js}\" --fix",
     "svgr": "npx @svgr/cli --out-dir src --index-template ./template/default-index.js --jsx-runtime automatic --icon --no-dimensions --typescript -- assets"
   },
-  "buildOptions": {
-    "cmd": "build"
-  },
   "devDependencies": {
     "@svgr/cli": "^6.5.1"
+  },
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist"
   }
 }

@@ -1,11 +1,16 @@
 {
   "name": "@are-visual/react-hooks",
   "version": "0.0.1",
+  "main": "./index.ts",
   "buildOptions": {
     "entry": "./index.ts"
   },
   "dependencies": {
     "@are-visual/portal-hosts": "workspace:^0.0.1",
     "@are-visual/utils": "workspace:^0.0.1"
+  },
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist"
   }
 }

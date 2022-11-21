@@ -2,6 +2,7 @@ import chalk from 'chalk'
 import path from 'path'
 
 import { compile as rollupCompile } from '../../../scripts/utils/compile'
+import { copyPackageJson } from '../../../scripts/utils/copy-package-json'
 import Logger from '../../../scripts/utils/logger'
 import { createRollupConfig } from './create-rollup-config'
 import { getAllFile } from './get-all-file'
@@ -35,5 +36,6 @@ function compile() {
 }
 
 compile().then(() => {
+  copyPackageJson(path.join(__dirname, '../'))
   log.success('Compilation completed.')
 })

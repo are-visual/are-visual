@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 
 import { compile } from './compile'
+import { copyPackageJson } from './copy-package-json'
 import { createRollupConfig } from './create-rollup-config'
 import Logger from './logger'
 
@@ -26,6 +27,7 @@ export function buildPackage(name: string, packagePath: string) {
   const startTime = Date.now()
   compile(createRollupConfig(packagePath))
     .then(() => {
+      copyPackageJson(packagePath)
       log.info(
         `Package ${chalk.cyan(packagePath)} was built in ${chalk.green(
           `${((Date.now() - startTime) / 1000).toFixed(2)}s`,

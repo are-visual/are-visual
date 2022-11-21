@@ -1,4 +1,9 @@
 {
   "name": "@are-visual/utils",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist"
+  }
 }
