@@ -2,8 +2,14 @@
   "name": "@are-visual/react-hooks",
   "version": "0.0.1",
   "main": "./index.ts",
+  "scripts": {
+    "gen-dts": "tsc --project tsconfig.build.json",
+    "copy-dts": "copyfiles -u 1 \"./**/*.d.ts\" dist",
+    "build-dts": "pnpm gen-dts && pnpm copy-dts"
+  },
   "buildOptions": {
-    "entry": "./index.ts"
+    "entry": "./index.ts",
+    "postbuild": "build-dts"
   },
   "dependencies": {
     "@are-visual/portal-hosts": "workspace:^0.0.1",

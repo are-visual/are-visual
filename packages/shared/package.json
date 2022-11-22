@@ -3,6 +3,14 @@
   "name": "@are-visual/shared",
   "version": "0.0.1",
   "main": "./src/index.ts",
+  "scripts": {
+    "gen-dts": "tsc --project tsconfig.build.json",
+    "copy-dts": "copyfiles -u 1 \"src/**/*.d.ts\" dist",
+    "build-dts": "pnpm gen-dts && pnpm copy-dts"
+  },
+  "buildOptions": {
+    "postbuild": "build-dts"
+  },
   "publishConfig": {
     "main": "index.js",
     "directory": "dist"

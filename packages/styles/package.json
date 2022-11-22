@@ -4,11 +4,15 @@
   "main": "./src/index.ts",
   "scripts": {
     "prebuild": "esno ./scripts/pre-build",
-    "build": "esno ./scripts/build"
+    "build": "esno ./scripts/build",
+    "gen-dts": "tsc --project tsconfig.build.json",
+    "copy-dts": "copyfiles -u 1 \"src/**/*.d.ts\" dist",
+    "build-dts": "pnpm gen-dts && pnpm copy-dts"
   },
   "buildOptions": {
     "prebuild": "prebuild",
-    "build": "build"
+    "build": "build",
+    "postbuild": "build-dts"
   },
   "dependencies": {
     "@are-visual/style-inject": "workspace:^0.0.1"
