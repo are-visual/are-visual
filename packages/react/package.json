@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "main": "./src/index.ts",
   "scripts": {
-    "build:dts": "tsc --project tsconfig.build.json"
+    "gen-dts": "tsc --project tsconfig.build.json",
+    "copy-dts": "copyfiles -u 1 \"src/**/*.d.ts\" dist",
+    "build-dts": "pnpm gen-dts && pnpm copy-dts"
   },
   "dependencies": {
     "@are-visual/icon": "workspace:^0.0.1",
@@ -18,7 +20,7 @@
     "react-dom": ">=16.14.0"
   },
   "buildOptions": {
-    "postbuild": "build:dts"
+    "postbuild": "build-dts"
   },
   "publishConfig": {
     "main": "index.js",
