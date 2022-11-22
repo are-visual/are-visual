@@ -74,7 +74,10 @@ export function createRollupConfig(packagePath: string): RollupOptions {
       }),
       nodeExternals(),
       nodeResolve(),
-      replace({ preventAssignment: true }),
+      replace({
+        preventAssignment: true,
+        __DEV__: `process.env.NODE_ENV !== 'production'`,
+      }),
     ],
   }
 }
