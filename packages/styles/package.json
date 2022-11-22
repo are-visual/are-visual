@@ -7,7 +7,8 @@
     "build": "esno ./scripts/build"
   },
   "buildOptions": {
-    "cmd": "build"
+    "prebuild": "prebuild",
+    "build": "build"
   },
   "dependencies": {
     "@are-visual/style-inject": "workspace:^0.0.1"

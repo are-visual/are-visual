@@ -2,7 +2,9 @@
   "name": "@are-visual/react",
   "version": "0.0.1",
   "main": "./src/index.ts",
-  "devDependencies": {},
+  "scripts": {
+    "build:dts": "tsc --project tsconfig.build.json"
+  },
   "dependencies": {
     "@are-visual/icon": "workspace:^0.0.1",
     "@are-visual/portal-hosts": "workspace:^0.0.1",
@@ -14,6 +16,9 @@
   "peerDependencies": {
     "react": ">=16.14.0",
     "react-dom": ">=16.14.0"
+  },
+  "buildOptions": {
+    "postbuild": "build:dts"
   },
   "publishConfig": {
     "main": "index.js",

@@ -8,28 +8,56 @@ import { copyPackageJson } from './copy-package-json'
 import { createRollupConfig } from './create-rollup-config'
 import Logger from './logger'
 
-export function buildPackage(name: string, packagePath: string) {
-  const log = new Logger(name)
+function createTask(cmd: string, cwd?: string) {
+  return new Promise<void>((resolve, reject) => {
+    const prebuild = childProcess.spawn(cmd, {
+      shell: true,
+      stdio: 'inherit',
+      cwd,
+    })
+    prebuild.on('close', (code) => {
+      if (code === 0) {
+        resolve()
+      } else {
+        reject(Error('compile fail.'))
+      }
+    })
+  })
+}
+
+export async function buildPackage(name: string, packagePath: string) {
   const packageJson = JSON.parse(
     fs.readFileSync(path.join(packagePath, './package.json')).toString('utf-8'),
   )
+  const log = new Logger(packageJson.name)
 
   const { buildOptions } = packageJson
-  if (buildOptions && buildOptions.cmd) {
-    childProcess.spawn(`pnpm -F ${packageJson.name} ${buildOptions.cmd}`, {
-      shell: true,
-      stdio: 'inherit',
-    })
-    return
+  if (buildOptions) {
+    if (buildOptions.prebuild) {
+      await createTask(`pnpm -F ${packageJson.name} ${buildOptions.prebuild}`)
+    }
+    if (buildOptions.build) {
+      await createTask(`pnpm -F ${packageJson.name} ${buildOptions.build}`)
+    }
+    if (buildOptions.build && buildOptions.postbuild) {
+      await createTask(`pnpm -F ${packageJson.name} ${buildOptions.postbuild}`)
+    }
+    if (buildOptions.build) {
+      return
+    }
   }
 
   log.info('start compiling')
   const startTime = Date.now()
   compile(createRollupConfig(packagePath))
     .then(() => {
+      if (!buildOptions.postbuild) return
+      return createTask(`pnpm -F ${packageJson.name} ${buildOptions.postbuild}`)
+    })
+    .then(() => {
       copyPackageJson(packagePath)
       log.info(
-        `Package ${chalk.cyan(packagePath)} was built in ${chalk.green(
+        `Package ${chalk.cyan(packageJson.name)} was built in ${chalk.green(
           `${((Date.now() - startTime) / 1000).toFixed(2)}s`,
         )}`,
       )

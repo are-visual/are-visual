@@ -33,7 +33,22 @@ pnpm build --package <name>
 
   
 
-#### cmd
+#### prebuilt
+编译前执行的命令，此命令需要在 `scripts` 中存在。
+
+  ```json
+  {
+    "scripts": {
+      "buildBefore": "node scripts/build.js"
+    },
+    "buildOptions": {
+      "prebuild": "buildBefore"
+    }
+  }
+  ```
+
+
+#### build
  自定义编译命令，此命令需要在 `scripts` 中存在。
 
   ```json
@@ -42,9 +57,22 @@ pnpm build --package <name>
       "build": "node scripts/build.js"
     },
     "buildOptions": {
-      "cmd": "build"
+      "build": "build"
     }
   }
   ```
 
-  
+#### postbuild
+编译后执行的命令，此命令需要在 `scripts` 中存在。
+
+  ```json
+  {
+    "scripts": {
+      "buildAfter": "node scripts/build.js"
+    },
+    "buildOptions": {
+      "postbuild": "buildAfter"
+    }
+  }
+  ```
+

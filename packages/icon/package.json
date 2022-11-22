@@ -10,6 +10,9 @@
   "devDependencies": {
     "@svgr/cli": "^6.5.1"
   },
+  "buildOptions": {
+    "prebuild": "build"
+  },
   "publishConfig": {
     "main": "index.js",
     "directory": "dist"
