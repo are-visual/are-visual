@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 
 export interface LazyRenderProps {
   /**
@@ -20,7 +20,7 @@ export interface LazyRenderProps {
   children?: ReactNode
 }
 
-const LazyRender: React.FC<LazyRenderProps> = (props) => {
+const LazyRender: FC<LazyRenderProps> = (props) => {
   const {
     render = false,
     forceRender = false,

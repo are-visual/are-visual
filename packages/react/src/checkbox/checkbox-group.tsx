@@ -1,5 +1,5 @@
 import { useControllableValue } from '@are-visual/react-hooks'
-import React, { ReactElement, ReactNode, useMemo } from 'react'
+import { ReactElement, ReactNode, useMemo } from 'react'
 
 import { CheckboxCtx, CheckboxCtxShape } from './context'
 

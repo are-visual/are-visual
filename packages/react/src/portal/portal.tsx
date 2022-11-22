@@ -1,6 +1,6 @@
 import { PortalTarget } from '@are-visual/portal-hosts'
 import canUseDom from 'rc-util/es/Dom/canUseDom'
-import React, { FC, ReactNode, useMemo, useRef } from 'react'
+import { FC, ReactNode, useMemo, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 import useContainer from './useContainer'

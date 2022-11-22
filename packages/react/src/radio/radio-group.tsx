@@ -6,9 +6,11 @@ import {
 } from '@are-visual/react-hooks'
 import cx from 'clsx'
 import { isNil } from 'lodash-es'
-import React, {
+import {
+  DetailedHTMLProps,
   ForwardedRef,
   forwardRef,
+  HTMLAttributes,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -17,8 +19,8 @@ import React, {
 import { RadioState, RadioStateShape } from './context'
 import type { RadioRenderFn } from './interface'
 
-type NativeDivElement = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
+type NativeDivElement = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >
 
@@ -116,6 +118,6 @@ function RadioGroup<T>(
 
 export default forwardRef(RadioGroup) as <T>(
   props: InternalRadioGroupProps<T> & {
-    ref?: React.ForwardedRef<HTMLDivElement>
+    ref?: ForwardedRef<HTMLDivElement>
   },
 ) => ReturnType<typeof RadioGroup>

@@ -5,7 +5,7 @@ import { useIsomorphicEffect, useScrollLock } from '@are-visual/react-hooks'
 import cx from 'clsx'
 import CSSMotion from 'rc-motion'
 import canUseDom from 'rc-util/es/Dom/canUseDom'
-import React, { FC, HTMLAttributes, useEffect } from 'react'
+import { FC, HTMLAttributes, useEffect } from 'react'
 
 export interface PureOverlayProps {
   /**

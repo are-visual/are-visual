@@ -8,7 +8,7 @@ import { useControllableValue, useId } from '@are-visual/react-hooks'
 import { Omit } from '@are-visual/utils'
 import cx from 'clsx'
 import CSSMotion from 'rc-motion'
-import React, {
+import {
   ChangeEvent,
   DetailedHTMLProps,
   ForwardedRef,

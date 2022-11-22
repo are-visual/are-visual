@@ -2,7 +2,7 @@ import './styles/index.scss'
 
 import { useControllableValue, useId } from '@are-visual/react-hooks'
 import cx from 'clsx'
-import React, {
+import {
   ChangeEvent,
   DetailedHTMLProps,
   ForwardedRef,

@@ -3,7 +3,7 @@ import './styles/index.scss'
 import { Close as CloseIcon } from '@are-visual/icon'
 import type { Omit } from '@are-visual/utils'
 import cx from 'clsx'
-import React, { CSSProperties, forwardRef, ReactNode } from 'react'
+import { CSSProperties, forwardRef, ReactNode } from 'react'
 
 import { Popup, PopupProps } from '../popup'
 

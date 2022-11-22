@@ -11,7 +11,7 @@ import cx from 'clsx'
 import CSSMotion from 'rc-motion'
 import canUseDom from 'rc-util/es/Dom/canUseDom'
 import { composeRef } from 'rc-util/es/ref'
-import React, {
+import {
   CSSProperties,
   forwardRef,
   HTMLAttributes,

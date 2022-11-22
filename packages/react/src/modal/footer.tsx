@@ -1,5 +1,5 @@
 import cx from 'clsx'
-import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
+import { forwardRef, HTMLAttributes, ReactNode } from 'react'
 
 export interface ModalFooterProps extends HTMLAttributes<HTMLElement> {
   /**
