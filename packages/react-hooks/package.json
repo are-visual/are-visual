@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "main": "./index.ts",
   "scripts": {
-    "gen-dts": "tsc --project tsconfig.build.json",
+    "check-type": "tsc --project tsconfig.build.json --noEmit",
+    "gen-dts": "tsc --project tsconfig.build.json --emitDeclarationOnly",
     "copy-dts": "copyfiles -u 1 \"./**/*.d.ts\" dist",
     "build-dts": "pnpm gen-dts && pnpm copy-dts"
   },
   "buildOptions": {
     "entry": "./index.ts",
+    "prebuild": "check-type",
     "postbuild": "build-dts"
   },
   "dependencies": {

@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "main": "./src/index.ts",
   "scripts": {
-    "prebuild": "esno ./scripts/pre-build",
+    "prebuild": "pnpm check-type && esno ./scripts/pre-build",
     "build": "esno ./scripts/build",
-    "gen-dts": "tsc --project tsconfig.build.json",
+    "check-type": "tsc --project tsconfig.build.json --noEmit",
+    "gen-dts": "tsc --project tsconfig.build.json --emitDeclarationOnly",
     "copy-dts": "copyfiles -u 1 \"src/**/*.d.ts\" dist",
     "build-dts": "pnpm gen-dts && pnpm copy-dts"
   },

@@ -69,6 +69,7 @@ export function createRollupConfig(packagePath: string): RollupOptions {
         namedExports: false,
       }),
       ts({
+        cwd: packagePath,
         check: false,
         tsconfig: path.resolve(process.cwd(), 'tsconfig.json'),
       }),

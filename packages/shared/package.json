@@ -4,11 +4,13 @@
   "version": "0.0.1",
   "main": "./src/index.ts",
   "scripts": {
-    "gen-dts": "tsc --project tsconfig.build.json",
+    "check-type": "tsc --project tsconfig.build.json --noEmit",
+    "gen-dts": "tsc --project tsconfig.build.json --emitDeclarationOnly",
     "copy-dts": "copyfiles -u 1 \"src/**/*.d.ts\" dist",
     "build-dts": "pnpm gen-dts && pnpm copy-dts"
   },
   "buildOptions": {
+    "prebuild": "check-type",
     "postbuild": "build-dts"
   },
   "publishConfig": {
