@@ -38,7 +38,9 @@ function Root() {
         })}
       </aside>
       <div className="flex flex-col pl-[240px] h-full min-h-full">
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </div>
     </main>
   )
