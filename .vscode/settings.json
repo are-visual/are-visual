@@ -1,0 +1,19 @@
+{
+  "tailwindCSS.experimental.configFile": "packages/tailwindcss/tailwindcss-config.js",
+  "tailwindCSS.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/.hg/**",
+    "**/.svn/**",
+    "**/dist/**",
+    "**/packages/icon/**",
+    "**/packages/logo/**",
+    "**/packages/portal-hosts/**",
+    "**/packages/react/**",
+    "**/packages/react-hooks/**",
+    "**/packages/shared/**",
+    "**/packages/style-inject/**",
+    "**/packages/styles/**",
+    "**/packages/utils/**",
+  ]
+}

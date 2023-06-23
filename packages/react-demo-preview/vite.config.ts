@@ -1,11 +1,7 @@
 import react from '@vitejs/plugin-react-swc'
-import { resolve } from 'path'
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import svgr from 'vite-plugin-svgr'
-
-function pathResolve(dir: string) {
-  return resolve(__dirname, '.', dir)
-}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -14,40 +10,15 @@ export default defineConfig(({ mode }) => {
       __DEV__: mode !== 'production',
     },
     resolve: {
-      alias: [
-        {
-          find: /@\//,
-          replacement: `${pathResolve('src')}/`,
-        },
-        {
-          find: '@are-visual/react',
-          replacement: `@are-visual/react/src`,
-        },
-        {
-          find: '@are-visual/icon',
-          replacement: `@are-visual/icon/src`,
-        },
-        {
-          find: '@are-visual/portal-hosts',
-          replacement: `@are-visual/portal-hosts/src`,
-        },
-        {
-          find: '@are-visual/react-hooks',
-          replacement: `@are-visual/react-hooks`,
-        },
-        {
-          find: '@are-visual/shared',
-          replacement: `@are-visual/shared/src`,
-        },
-        {
-          find: '@are-visual/utils',
-          replacement: `@are-visual/utils/src`,
-        },
-        {
-          find: '@are-visual/styles',
-          replacement: `@are-visual/styles/src`,
-        },
-      ],
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@are-visual/icon': '@are-visual/icon/src',
+        '@are-visual/portal-host': '@are-visual/portal-host/src',
+        '@are-visual/react': '@are-visual/react/src',
+        '@are-visual/shared': '@are-visual/shared/src',
+        '@are-visual/utils': '@are-visual/utils/src',
+        '@are-visual/styles': '@are-visual/styles/src',
+      },
     },
     plugins: [react(), svgr()],
   }

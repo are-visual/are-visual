@@ -1,10 +1,6 @@
-import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
+import react from '@vitejs/plugin-react-swc'
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
-
-function pathResolve(dir: string) {
-  return resolve(__dirname, '.', dir)
-}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -13,12 +9,9 @@ export default defineConfig(({ mode }) => {
       __DEV__: mode !== 'production',
     },
     resolve: {
-      alias: [
-        {
-          find: /@\//,
-          replacement: `${pathResolve('src')}/`,
-        },
-      ],
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
     },
     plugins: [react()],
   }

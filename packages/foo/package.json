@@ -1,0 +1,10 @@
+{
+  "name": "@are-visual/foo",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "publishConfig": {
+    "main": "index.js",
+    "directory": "dist",
+    "linkDirectory": false
+  }
+}

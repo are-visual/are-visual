@@ -8,13 +8,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3",
-    "tailwindcss": "^3.0.23"
+    "@are-visual/tailwindcss": "workspace:^",
+    "@types/react-router-dom": "^5.3.3"
   },
   "dependencies": {
+    "@are-visual/foo": "workspace:^",
     "@are-visual/logo": "workspace:^0.0.1",
     "@are-visual/react-demo": "workspace:^0.0.1",
-    "@are-visual/styles": "workspace:^0.0.1",
+    "@are-visual/styles": "workspace:^",
     "react-router-dom": "^6.4.2"
   }
 }

@@ -26,6 +26,7 @@
   },
   "publishConfig": {
     "main": "index.js",
-    "directory": "dist"
+    "directory": "dist",
+    "linkDirectory": false
   }
 }

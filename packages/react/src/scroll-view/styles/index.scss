@@ -1,0 +1,85 @@
+.are-scroll-view {
+  --are-scrollbar-size: 12px;
+
+  position: relative;
+  height: 100%;
+  max-height: 100%;
+
+  &-pr {
+    padding-right: var(--are-scrollbar-size);
+  }
+
+  &-pb {
+    padding-bottom: var(--are-scrollbar-size);
+  }
+
+  &-content {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &-track {
+    position: absolute;
+    pointer-events: all;
+    opacity: 1;
+    transition: opacity 0.16s;
+
+    &:hover {
+      .are-scroll-view-slider {
+        background-color: #7d7d7d;
+      }
+    }
+
+    &-x {
+      right: 10px;
+      bottom: 0;
+      left: 2px;
+      height: var(--are-scrollbar-size);
+      padding: 2px 0;
+    }
+
+    &-y {
+      top: 2px;
+      right: 0;
+      bottom: 10px;
+      width: var(--are-scrollbar-size);
+      padding: 0 2px;
+    }
+  }
+
+  &-slider {
+    background-color: #c1c1c1;
+    border-radius: 999px;
+
+    &-x {
+      min-width: 10px;
+      height: 100%;
+    }
+
+    &-y {
+      top: 0;
+      right: 0;
+      min-height: 10px;
+    }
+
+    &-dragging {
+      background-color: #7d7d7d;
+    }
+  }
+
+  &-hidden {
+    .are-scroll-view-track {
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+}
