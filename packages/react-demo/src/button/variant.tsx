@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@are-visual/react'
+import { Button, ButtonProps, Switch } from '@are-visual/react'
 import { FC, useState } from 'react'
 
 const variant: ButtonProps['variant'][] = [
@@ -87,22 +87,12 @@ const ButtonUsage: FC = () => {
           <option value="orange">orange</option>
           <option value="none">none</option>
         </select>
-        <h3>Loading</h3>
-        <input
-          type="checkbox"
-          checked={loading}
-          onChange={(e) => {
-            setLoading(e.target.checked)
-          }}
-        />
-        <h3>Disabled</h3>
-        <input
-          type="checkbox"
-          checked={disabled}
-          onChange={(e) => {
-            setDisabled(e.target.checked)
-          }}
-        />
+        <Switch checked={loading} onChange={setLoading}>
+          Loading
+        </Switch>
+        <Switch checked={disabled} onChange={setDisabled}>
+          Disabled
+        </Switch>
       </aside>
     </section>
   )

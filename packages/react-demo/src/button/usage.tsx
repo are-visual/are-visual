@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@are-visual/react'
+import { Button, ButtonProps, Switch } from '@are-visual/react'
 import { FC, useState } from 'react'
 
 const ButtonUsage: FC = () => {
@@ -44,7 +44,16 @@ const ButtonUsage: FC = () => {
           {label}
         </Button>
       </div>
-      <aside style={{ padding: 16, flex: 'none', width: 250 }}>
+      <aside
+        className="space-y-[8px]"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: 16,
+          flex: 'none',
+          width: 250,
+        }}
+      >
         <h3>Background color</h3>
         <input
           type="color"
@@ -104,30 +113,15 @@ const ButtonUsage: FC = () => {
             setRounded(e.target.value)
           }}
         />
-        <h3>FullWidth</h3>
-        <input
-          type="checkbox"
-          checked={fullWidth}
-          onChange={(e) => {
-            setFullWidth(e.target.checked)
-          }}
-        />
-        <h3>Loading</h3>
-        <input
-          type="checkbox"
-          checked={loading}
-          onChange={(e) => {
-            setLoading(e.target.checked)
-          }}
-        />
-        <h3>Disabled</h3>
-        <input
-          type="checkbox"
-          checked={disabled}
-          onChange={(e) => {
-            setDisabled(e.target.checked)
-          }}
-        />
+        <Switch checked={fullWidth} onChange={setFullWidth}>
+          FullWidth
+        </Switch>
+        <Switch checked={loading} onChange={setLoading}>
+          Loading
+        </Switch>
+        <Switch checked={disabled} onChange={setDisabled}>
+          Disabled
+        </Switch>
         <h3>Label</h3>
         <input
           style={{ width: '100%', border: '1px solid #dfdfdf' }}

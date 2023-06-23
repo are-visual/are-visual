@@ -18,3 +18,16 @@ body {
   min-height: 100%;
   margin: 0;
 }
+
+.prefix::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 6px;
+  width: 3px;
+  height: 54%;
+  margin: auto 0;
+  content: '';
+  background-color: #0764ff;
+  border-radius: 12px;
+}

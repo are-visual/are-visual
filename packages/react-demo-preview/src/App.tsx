@@ -16,7 +16,7 @@ import routes, { sideMenu } from './router'
 function Root() {
   return (
     <main className="h-full min-h-full">
-      <aside className="border-box fixed top-0 left-0 h-full w-[240px] p-[16px] overflow-y-auto text-[14px] text-[#212121] bg-[#f9f9f9]">
+      <aside className="border-box fixed top-0 left-0 h-full w-[260px] p-[16px] overflow-y-auto text-[14px] text-[#212121]">
         <a className="flex items-center px-[16px] pt-[14px] pb-[20px]" href="/">
           <Logo className="h-[30px]" />
           <h1 className="ml-[10px] text-[20px] font-semibold">Are Visual</h1>
@@ -26,9 +26,13 @@ function Root() {
             <NavLink
               key={item.path}
               className={({ isActive }) => {
-                return clsx('block py-[4px] px-[16px]', {
-                  'text-primary': isActive,
-                })
+                return clsx(
+                  'block py-[10px] px-[16px] relative rounded-[6px] leading-none transition-colors',
+                  {
+                    'hover:bg-gray-100': !isActive,
+                    'prefix bg-gray-100': isActive,
+                  },
+                )
               }}
               to={item.path!}
             >
@@ -37,7 +41,7 @@ function Root() {
           )
         })}
       </aside>
-      <div className="flex flex-col pl-[240px] h-full min-h-full">
+      <div className="flex flex-col pl-[260px] h-full min-h-full">
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>

@@ -22,10 +22,10 @@ const Content: FC<ContentProps> = (props) => {
 
   return (
     <>
-      <header className="pt-[24px] px-[24px]">
+      <header className="pt-[24px] px-[48px]">
         <h2 className="font-bold text-[28px] mb-[10px]">{title}</h2>
       </header>
-      <div className="flex items-start px-[24px] pb-[24px]">
+      <div className="flex items-start px-[48px] pb-[48px]">
         <div className="flex-grow space-y-[18px]">
           {contentConfig.map((item) => {
             const name = item.title

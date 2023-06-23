@@ -1,4 +1,4 @@
-import { Checkbox } from '@are-visual/react'
+import { Checkbox, Switch } from '@are-visual/react'
 import { css } from '@stitches/react'
 import { FC, useState } from 'react'
 
@@ -64,22 +64,14 @@ const Basic: FC = () => {
           </div>
         </div>
         <aside style={{ padding: 16, flex: 'none', width: 250 }}>
-          <h3>Disabled</h3>
-          <input
-            type="checkbox"
-            checked={disabled}
-            onChange={(e) => {
-              setDisabled(e.target.checked)
-            }}
-          />
-          <h3>Checked</h3>
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={(e) => {
-              setChecked(e.target.checked)
-            }}
-          />
+          <h3 className="ml-[4px] mb-[8px] text-[14px] text-gray-400">
+            Disabled
+          </h3>
+          <Switch checked={disabled} onChange={setDisabled} />
+          <h3 className="ml-[4px] mb-[8px] text-[14px] text-gray-400">
+            Checked
+          </h3>
+          <Switch checked={checked} onChange={setChecked} />
         </aside>
       </section>
     </div>
